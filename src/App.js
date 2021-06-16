@@ -1,9 +1,10 @@
 import './App.scss';
+import SideBar from './components/layouts/SideBar';
 
 const App = () => {
   return (
-    <div>
-      <h6 className="text-center">Hello World!</h6>
+    <div className="wrapper">
+      <SideBar />
     </div>
   )
 }
