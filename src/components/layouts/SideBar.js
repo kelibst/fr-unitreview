@@ -1,8 +1,13 @@
 
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { fetchHospital } from '../../store/actions/fetchAction'
 
-export class SideBar extends Component {
-
+class SideBar extends Component {
+componentDidMount() {
+  const { fetchHospital } = this.props
+  fetchHospital()
+}
   render() {
     return (
       <div className="sidebar">
@@ -11,5 +16,7 @@ export class SideBar extends Component {
     )
   }
 }
-
-export default SideBar
+const mapStateToProps = state => ({
+  hospital: state.hospital
+});
+export default connect (mapStateToProps,{fetchHospital}) (SideBar)
