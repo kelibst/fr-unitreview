@@ -4,7 +4,7 @@ import './HomePage.scss';
 
 const HomePage = () => (
   <div className="content">
-   Homepage
+    
   </div>
 );
 

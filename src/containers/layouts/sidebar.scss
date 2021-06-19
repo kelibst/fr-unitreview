@@ -41,11 +41,6 @@ $default-blue: rgb(79, 76, 233);
     transition: all 0.3s;
   }
 
-  .nav-cust {
-    position: relative;
-    left: 40px;
-}
-
   &-link.active,
   &-link.active:focus {
     padding: 1rem 0;

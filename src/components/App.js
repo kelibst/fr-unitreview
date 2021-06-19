@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 import "./App.scss";
-import SideBar from "./components/layouts/SideBar";
+import SideBar from "../containers/layouts/SideBar";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { connect } from "react-redux";
-import { fetchHospital } from "./store/actions/fetchAction";
-import About from "./containers/About";
-import HomePage from "./containers/pages/HomePage";
+import { fetchHospital } from "../store/actions/fetchAction";
+import About from "../containers/About";
+import HomePage from "../containers/pages/HomePage";
 
 class App extends Component {
   componentDidMount() {
