@@ -1,11 +1,12 @@
 import React, { Component } from "react";
 import "./App.scss";
-import SideBar from "./components/layouts/SideBar";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { connect } from "react-redux";
-import { fetchHospital } from "./store/actions/fetchAction";
-import About from "./containers/About";
-import HomePage from "./containers/pages/HomePage";
+import { fetchHospital } from "../store/actions/fetchAction";
+import About from "../containers/About";
+import HomePage from "../containers/pages/HomePage";
+import Login from "./Login";
+import SignUp from "./SignUp";
 
 class App extends Component {
   componentDidMount() {
@@ -16,12 +17,17 @@ class App extends Component {
     const { hospitalData } = this.props.hospital;
     return (
       <Router>
-        <div className="wrapper d-block d-sm-flex">
-          <SideBar hospital={hospitalData} />
+        <div className="wrapper d-block">
           <Switch>
+            <Route exact path="/login" component ={Login} />
+            <Route exact path="/create-account" component={SignUp} />
             <Route exact path="/about" component={About} />
-            <Route path="/" component={HomePage} />
-            
+            <Route
+            path="/"
+              render={(props) => (
+                <HomePage {...props} hospital={hospitalData} />
+              )}
+            />
           </Switch>
         </div>
       </Router>
