@@ -27,7 +27,7 @@ const About = () => {
           </h4>
           <section className="description">
             <h6 className="font-weight-bold text-center">For starters!</h6>
-            <p className="text-center text-secondary my-5">
+            <div className="text-center text-secondary my-5">
               This app is built using
               <li className="text-primary">Rails</li>
               <li className="text-primary">React</li>
@@ -44,7 +44,7 @@ const About = () => {
                   Github
                 </a>{" "}
               </p>
-            </p>
+            </div>
           </section>
 
           <div className="actions">
