@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,400;0,700;0,900;1,100;1,300;1,700;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;1,100;1,300;1,400;1,500&display=swap');
+
 $primary-color: rgb(233, 90, 7);
 
 .header {
@@ -90,10 +92,9 @@ $primary-color: rgb(233, 90, 7);
   border-radius: 1.6rem;
   margin-right: 1rem;
 }
-.hero-title-container {
-  height: 40vh;
-  width: 100%;
-  min-height: 500px;
+.hero-container {
+  height: 60vh;
+  min-height: 600px;
   position: relative;
 }
 .ambu-img {
@@ -101,3 +102,43 @@ $primary-color: rgb(233, 90, 7);
   height: 100%;
   background-size: contain;
 }
+.hero-side-bg{
+  // background-image: url(../../assets/imges/ambulance.svg);
+  background-size: cover;
+    background-size: cover;
+   background-repeat: no-repeat;
+   background-position: center; 
+   background-image: url(../../assets/imges/doctors.svg);
+}
+
+.hero-title-container {
+ max-width: fit-content;
+}
+.hero-titla {
+  font-family: lato;
+}
+
+.hero-card {
+  padding: 2rem;
+  border-radius: .5rem;
+  max-width: fit-content;
+
+  &-cont {
+    margin: 1rem;
+    font-weight: bolder;
+    font-family: Raleway;
+    font-size: 1.4rem;
+  }
+}
+
+.hero-card {
+  position: relative;
+}
+
+img.lil-heart {
+  position: absolute;
+  top: -30px;
+  right: 10px;
+  width: 50px;
+}
+
