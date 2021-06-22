@@ -120,7 +120,7 @@ $primary-color: rgb(233, 90, 7);
 
 .hero-card {
   padding: 2rem;
-  border-radius: .5rem;
+  border-radius: 1rem;
   max-width: fit-content;
 
   &-cont {
@@ -142,3 +142,24 @@ img.lil-heart {
   width: 50px;
 }
 
+.ser{
+  &-cont {
+  display: flex;
+  margin: 1rem;
+  justify-content: center;
+  }
+
+  &-card {
+    margin: 1rem;
+    text-align: center;
+  }
+
+  &-img {
+    width: 200px;
+    height: 250px;
+  }
+}
+
+.text-lime {
+  color: lime;
+}
