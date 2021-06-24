@@ -1,0 +1,18 @@
+.auth {
+  min-height: 100vh;
+  align-items: center;
+  justify-items: center;
+
+  &-header {
+    text-align: center;
+    margin: auto auto;
+
+    &-cont {
+      min-height: 100vh;
+    }
+  }
+  &-form {
+    max-width: 600px;
+    margin: 1rem auto;
+  }
+}
