@@ -1,6 +1,7 @@
 /* eslint-disable no-case-declarations */
 const initialState = {
-  hospitalData: []
+  hospitalData: {},
+  user: {},
 };
 const fetchReducer = (state = initialState, action) => {
   switch (action.type) {
