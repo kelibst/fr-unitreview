@@ -4,6 +4,8 @@ import Icofont from "react-icofont";
 import { connect } from "react-redux";
 import { authAdmin } from '../store/actions/userAction'
 import "./Auth.scss";
+import ErrOrs from "./ErrOrs";
+import Success from "./Success";
 
 class Login extends Component {
   constructor (props) {
@@ -17,7 +19,7 @@ class Login extends Component {
   }
   componentDidUpdate(){
     const {
-      currentUser, history, errors,
+      currentUser, history, error, success
     } = this.props;
     let jwtToken = localStorage.getItem('jwt')
     jwtToken = JSON.parse(jwtToken)
@@ -30,7 +32,7 @@ class Login extends Component {
   }
   render() {
     const { hospitalData } = this.props.hospital;
-    const { authAdmin } = this.props
+    const { authAdmin, success, error } = this.props
 
     const handleChange = (e) => {
       const { id, value } = e.target;
@@ -68,7 +70,10 @@ class Login extends Component {
                 <br></br> if you are a reviewer, you are probably at the wrong
                 place.
               </p>
-              <div className="form-footer">Hint Goes here...</div>
+              <div className="form-footer">
+                { success?.type && <Success /> }
+                { error && <ErrOrs />}
+              </div>
             </div>
           </div>
         <div className="col-md-8 px-auto auth-form-cont bg-white">
@@ -113,6 +118,8 @@ class Login extends Component {
 
 const mapStateToProps = (state) => ({
   hospital: state.hospital,
-  currentUser: state.userData.currentUser
+  currentUser: state.userData.currentUser,
+  success: state.success,
+  error: state.errors.err
 });
 export default connect(mapStateToProps, { authAdmin })(Login);

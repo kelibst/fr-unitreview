@@ -44,18 +44,18 @@ class ErrOrs extends Component {
               {' '}
             </h6>
             )}
-            {errors.response && (
-              <h6 className="my-5">{errors.response.data.error}</h6>
+            {errors?.response && (
+              <h6 className="my-5">{  (errors?.response?.data?.error) == "object" && errors?.response?.data?.error.each(
+                err => {
+                  <li>err</li>
+                }
+              )}</h6>
             )}
 
-            {errors.response && errors.response.status === 401 && (
+            {errors?.response?.status === 401 && (
               <h6 className="my-5 text-center">
                 Your Login session has expired. Kindly login again.
               </h6>
-            )}
-
-            {errors.response && (
-              <h6 className="my-5">{errors.response.data.error}</h6>
             )}
             <h6 className="content">
               If you are trying to login double check your username,email and
@@ -84,6 +84,6 @@ ErrOrs.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  errors: state.error.err,
+  errors: state.errors.err,
 });
 export default connect(mapStateToProps, { unloadError })(ErrOrs);

@@ -14,13 +14,25 @@ const authAdmin = data => dispatch => {
             Authorization: `Bearer ${token}`,
           },
         });
-        debugger
         userAxios
           .get(`/administrators/${username}.json`)
-          .then(res => dispatch({
+          .then(res => {
+            const succPayload = {
+              message: 'You have successfully deleted a house.',
+              type: 'delete_house',
+            };
+
+            dispatch({
+              type: 'SUCC_MSG',
+              payload: succPayload,
+            });
+
+
+            dispatch({
             type: 'FETCH_USER',
             payload: res.data,
-          }))
+          })
+        })
           .catch(err => dispatch({
             type: 'CREATE_ERROR',
             payload: err,
