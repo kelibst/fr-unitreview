@@ -6,10 +6,10 @@ const errorReducer = (state = { err: '' }, action) => {
         err: action.payload,
       };
     case 'UNLOAD_ERROR':
-      // return {
-      //   ...state,
-      //   err: action.payload,
-      // };
+      return {
+        ...state,
+        err: action.payload,
+      };
       console.log(action.payload)
     default:
       return state;

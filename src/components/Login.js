@@ -15,6 +15,19 @@ class Login extends Component {
       }
     }
   }
+  componentDidUpdate(){
+    const {
+      currentUser, history, errors,
+    } = this.props;
+    let jwtToken = localStorage.getItem('jwt')
+    jwtToken = JSON.parse(jwtToken)
+    
+    if (currentUser?.body) {
+      history.push(`/dashboard/${currentUser?.body?.username}`)
+    } 
+
+    
+  }
   render() {
     const { hospitalData } = this.props.hospital;
     const { authAdmin } = this.props
@@ -100,5 +113,6 @@ class Login extends Component {
 
 const mapStateToProps = (state) => ({
   hospital: state.hospital,
+  currentUser: state.userData.currentUser
 });
 export default connect(mapStateToProps, { authAdmin })(Login);

@@ -1,17 +1,30 @@
 import Axios from 'axios'
 
 const authAdmin = data => dispatch => {
-    const url = 'https://unitreview.herokuapp.com//api/v1/auth/login.json';
+    const url = 'https://unitreview.herokuapp.com/api/v1/auth/login.json';
     
     Axios.post(url, data)
       .then(res => {
-        const jwt = res.data.token
-        localStorage.setItem('jwt', res.data.token);
-        debugger
-        dispatch({
-          type: 'AUTH_ADMIN',
-          payload: res.data,
+        const jwtToken = JSON.stringify(res.data);
+        localStorage.setItem('jwt', jwtToken);
+        const { username, token } = res.data
+        const userAxios = Axios.create({
+          baseURL: 'https://unitreview.herokuapp.com/api/v1/',
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
         });
+        debugger
+        userAxios
+          .get(`/administrators/${username}.json`)
+          .then(res => dispatch({
+            type: 'FETCH_USER',
+            payload: res.data,
+          }))
+          .catch(err => dispatch({
+            type: 'CREATE_ERROR',
+            payload: err,
+          }));
       })
       .catch(err => dispatch({
         type: 'CREATE_ERROR',

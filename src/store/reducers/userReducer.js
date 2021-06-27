@@ -18,6 +18,7 @@ const userReducer = (state = initialState, action) => {
       };
 
     case 'FETCH_USER':
+      debugger
       return {
         ...state,
         currentUser: action.payload,
