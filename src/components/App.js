@@ -7,6 +7,7 @@ import About from "../containers/About";
 import HomePage from "../containers/pages/HomePage";
 import Login from "./Login";
 import SignUp from "./SignUp";
+import Dashboard from "./dashboard/Dashboard";
 
 class App extends Component {
   componentDidMount() {
@@ -22,6 +23,7 @@ class App extends Component {
             <Route exact path="/login" component ={Login} />
             <Route exact path="/create-account" component={SignUp} />
             <Route exact path="/about" component={About} />
+            <Route exact path="/dashboard/:username" component={Dashboard} />
             <Route
             path="/"
               render={(props) => (

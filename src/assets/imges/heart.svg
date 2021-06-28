@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="82.732567mm"
+   height="79.557556mm"
+   viewBox="0 0 82.732567 79.557556"
+   version="1.1"
+   id="svg695"
+   inkscape:version="1.1 (c4e8f9ed74, 2021-05-24)"
+   sodipodi:docname="heart.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview697"
+     pagecolor="#505050"
+     bordercolor="#eeeeee"
+     borderopacity="1"
+     inkscape:pageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="false"
+     inkscape:document-units="px"
+     showgrid="true"
+     inkscape:zoom="0.67081229"
+     inkscape:cx="-461.38093"
+     inkscape:cy="260.13238"
+     inkscape:window-width="1920"
+     inkscape:window-height="1022"
+     inkscape:window-x="0"
+     inkscape:window-y="32"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="g301"
+     borderlayer="false"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0">
+    <inkscape:grid
+       type="xygrid"
+       id="grid393"
+       originx="-17.933458"
+       originy="-97.353438" />
+  </sodipodi:namedview>
+  <defs
+     id="defs692" />
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-17.933457,-97.353439)">
+    <path
+       d="m -161.4094,30.854232 h -0.19844 c -7.89517,0 -14.87752,4.177771 -18.89391,10.342561 -4.01637,-6.16479 -10.99873,-10.342561 -18.89389,-10.342561 h -0.19844 a 22.489583,22.489583 0 0 0 -22.27527,22.476351 c 0,7.35806 3.22262,17.79852 9.50648,26.38954 11.97239,16.36977 31.86112,30.691667 31.86112,30.691667 0,0 19.88874,-14.319247 31.85849,-30.691667 6.2865,-8.59102 9.50648,-19.03148 9.50648,-26.38954 A 22.489583,22.489583 0 0 0 -161.4094,30.854232 Z m -2.83898,50.125311 a 4.4582291,4.4582291 0 0 1 -4.14602,-2.86279 h -4.72017 a 1.49225,1.49225 0 0 1 -1.40494,-1.016 l -1.44992,-4.36827 -4.58788,16.0311 a 1.4843125,1.4843125 0 0 1 -1.42346,1.07156 h -0.0926 a 1.4657916,1.4657916 0 0 1 -1.37583,-1.22766 l -4.72811,-28.43742 -3.45546,16.8275 a 1.4737291,1.4737291 0 0 1 -1.43139,1.11919 h -6.64898 a 1.4790208,1.4790208 0 1 1 0,-2.9554 h 5.48481 l 4.89479,-22.62452 a 1.4843125,1.4843125 0 0 1 2.91042,0.12171 l 4.82865,29.00892 4.11163,-14.34307 a 1.4552083,1.4552083 0 0 1 1.38377,-1.05833 h 0.0291 a 1.476375,1.476375 0 0 1 1.40229,1.016 l 2.62203,7.88723 h 3.59304 a 4.4344166,4.4344166 0 1 1 4.21216,5.82083 z"
+       fill="#6c63ff"
+       id="path344"
+       style="fill:#00ff00;stroke-width:0.264583"
+       inkscape:export-filename="/home/kelib/Desktop/heart.svg"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+  </g>
+  <g
+     inkscape:label="Layer 1 copy"
+     inkscape:groupmode="layer"
+     id="g301"
+     transform="translate(-17.933457,-97.353439)">
+    <g
+       id="g391"
+       transform="translate(-48.634177,73.177846)">
+      <path
+         d="m 127.02757,24.175593 h -0.19844 c -7.89517,0 -14.87752,4.17777 -18.8939,10.34256 -4.01637,-6.16479 -10.998729,-10.34256 -18.893889,-10.34256 h -0.19844 a 22.489583,22.489583 0 0 0 -22.275267,22.47635 c 0,7.35806 3.22262,17.798518 9.50648,26.389538 11.972387,16.369772 31.861116,30.691669 31.861116,30.691669 0,0 19.88873,-14.319247 31.85849,-30.691669 6.2865,-8.59102 9.50648,-19.031478 9.50648,-26.389538 a 22.489583,22.489583 0 0 0 -22.27263,-22.47635 z m -2.83898,50.125308 a 4.4582291,4.4582291 0 0 1 -4.14602,-2.86279 h -4.72017 a 1.49225,1.49225 0 0 1 -1.40494,-1.016 l -1.44992,-4.36827 -4.58787,16.031102 a 1.4843125,1.4843125 0 0 1 -1.42346,1.07156 h -0.0926 a 1.4657916,1.4657916 0 0 1 -1.37583,-1.22766 l -4.72811,-28.43742 -3.455459,16.827498 a 1.4737291,1.4737291 0 0 1 -1.43139,1.11919 h -6.64898 a 1.4790208,1.4790208 0 1 1 0,-2.9554 h 5.48481 l 4.89479,-22.624518 a 1.4843125,1.4843125 0 0 1 2.910419,0.12171 l 4.82865,29.008918 4.11162,-14.343068 a 1.4552083,1.4552083 0 0 1 1.38377,-1.05833 h 0.0291 a 1.476375,1.476375 0 0 1 1.40229,1.016 l 2.62203,7.887228 h 3.59304 a 4.4344166,4.4344166 0 1 1 4.21216,5.82083 z"
+         fill="#6c63ff"
+         id="path299"
+         style="fill:#00ff00;stroke-width:0.264583"
+         inkscape:export-filename="/home/kelib/Desktop/heart.svg"
+         inkscape:export-xdpi="96"
+         inkscape:export-ydpi="96" />
+    </g>
+  </g>
+</svg>
