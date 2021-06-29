@@ -59,7 +59,10 @@ const authAdmin = data => dispatch => {
         type: 'CREATE_USER',
         payload: res.data,
       }))
-      .catch(err => console.log(err));
+      .catch(err => dispatch({
+        type: 'CREATE_ERROR',
+        payload: err,
+      }));
   };
 
   export {createAdmin, authAdmin }
