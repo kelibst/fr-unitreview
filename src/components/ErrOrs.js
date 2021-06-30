@@ -25,7 +25,7 @@ class ErrOrs extends Component {
     const setShow = () => {
       
       const { unloadError, errors } = this.props;
-      debugger
+      
       unloadError();
       this.setState({
         show: false,

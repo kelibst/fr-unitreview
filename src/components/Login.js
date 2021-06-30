@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Button, Form } from "react-bootstrap";
 import Icofont from "react-icofont";
 import { connect } from "react-redux";
-import { authAdmin } from '../store/actions/userAction'
+import { authAdmin, fetchAdmin } from '../store/actions/userAction'
 import "./Auth.scss";
 import ErrOrs from "./ErrOrs";
 import Success from "./Success";
@@ -17,6 +17,15 @@ class Login extends Component {
       }
     }
   }
+
+  componentDidMount(){
+    let jwtToken = localStorage.getItem('jwt')
+    jwtToken = JSON.parse(jwtToken)
+    const { fetchAdmin } = this.props
+    jwtToken && fetchAdmin(jwtToken)
+    debugger
+  }
+
   componentDidUpdate(){
     const {
       currentUser, history, error, success
@@ -122,4 +131,4 @@ const mapStateToProps = (state) => ({
   success: state.success,
   error: state.errors.err
 });
-export default connect(mapStateToProps, { authAdmin })(Login);
+export default connect(mapStateToProps, { authAdmin, fetchAdmin })(Login);

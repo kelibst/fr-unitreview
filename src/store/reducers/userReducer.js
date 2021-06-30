@@ -8,7 +8,7 @@ const userReducer = (state = initialState, action) => {
     case 'AUTH_ADMIN':
       const { jwt } = action.payload;
       localStorage.setItem('jwt', jwt);
-      debugger
+      
       return
 
     case 'CREATE_USER':
@@ -18,7 +18,7 @@ const userReducer = (state = initialState, action) => {
       };
 
     case 'FETCH_USER':
-      debugger
+      
       return {
         ...state,
         currentUser: action.payload,

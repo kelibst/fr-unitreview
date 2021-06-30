@@ -3,6 +3,7 @@ import { Alert, Button } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import successWithMessage from '../store/actions/successAction';
+import Icofont from 'react-icofont';
 
 class Success extends Component {
   constructor(props) {
@@ -32,7 +33,7 @@ class Success extends Component {
     return (
       <div className="alert-success col-sm-10 col-md-6 col-ld-4 mx-auto">
         <Alert show={show} variant="success">
-          <Alert.Heading>{success.message}</Alert.Heading>
+          <Alert.Heading> <Icofont icon="tick-mark" /> {success.message}</Alert.Heading>
 
           <div className="d-flex justify-content-end">
             <Button onClick={setShow} variant="outline-success">
@@ -55,6 +56,6 @@ Success.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  success: state.succMsg.message,
+  success: state.success.message,
 });
 export default connect(mapStateToProps, { successWithMessage })(Success);
