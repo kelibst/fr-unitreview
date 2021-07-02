@@ -26,6 +26,7 @@ class Dashboard extends Component {
         let jwtToken = localStorage.getItem('jwt')
         jwtToken = JSON.parse(jwtToken)
         // error?.response?.status === 401 && history.push("/login")
+        typeof(error?.response?.data?.error) === "string" && error?.response?.data?.error?.includes("expired") && history.push("/login")
         !currentUser.id && !jwtToken && history.push("/login")
     }
     render() {

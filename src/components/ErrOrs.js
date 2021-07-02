@@ -32,7 +32,7 @@ class ErrOrs extends Component {
         show: false,
       });
     };
-
+    const { error } = errors?.response?.data
     return (
       <div>
         <Alert show={show} variant="danger">
@@ -42,7 +42,8 @@ class ErrOrs extends Component {
           
             { typeof(errors) == "object" && <h6>{errors?.Email}</h6>}
             {Array.isArray(errors) && errors.map(err => <h6>{err}</h6>) }
-            {errors?.response?.data && Object.entries(errors?.response?.data?.error).map(error => <h6 className="my-2">{error}</h6>)}
+            {typeof(error) === "string" && <h6 className="my-2">Sorry your session has expired! <br></br> Kindly login again.</h6>}
+            {error && typeof(error) !== "string" && Object.entries(errors?.response?.data?.error).map(error => <h6 className="my-2">{error}</h6>)}
             {errors?.request && !errors?.response?.data && <h6 className="my-5"><Icofont icon="close" /> {errors.request.response}</h6>}
             
           </div>
