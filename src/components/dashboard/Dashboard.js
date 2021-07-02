@@ -14,21 +14,24 @@ class Dashboard extends Component {
     componentDidMount(){
         let jwtToken = localStorage.getItem('jwt')
         jwtToken = JSON.parse(jwtToken)
-        const { fetchAdmin , currentUser } = this.props
-        !currentUser.id && fetchAdmin(jwtToken)
+        const { fetchAdmin , currentUser,  } = this.props
+        !currentUser.id && jwtToken && fetchAdmin(jwtToken)
     }
 
     componentDidUpdate(){
         const { error, history, currentUser } = this.props;
+        let jwtToken = localStorage.getItem('jwt')
+        jwtToken = JSON.parse(jwtToken)
         error?.response?.status === 401 && history.push("/login")
+        !currentUser.id && !jwtToken && history.push("/login")
     }
     render() {
         const { hospital } = this.props
         return (
-            <div className="dashboard bg-white">
+            <div className="dashboard bg-light">
                 <SideBar hospital={hospital} />
                 <BrowserRouter>
-                <div className="container-fluid dash-content">
+                <div className="container-fluid bg-white dash-content">
                     <Route path="/" component={Units} />
                 </div>
                 </BrowserRouter>

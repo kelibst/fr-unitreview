@@ -27,10 +27,11 @@ $default-blue: rgb(79, 76, 233);
 }
 
 .sidebar {
-  color: white;
+  color: black;
   height: 100vh;
   position: sticky;
   top: 0;
+  font-family: 'Mulish', sans-serif;
 }
 
 .nav {
@@ -59,25 +60,27 @@ $default-blue: rgb(79, 76, 233);
 .header {
   &-content {
     text-align: center;
-    font-size: 3rem;
+    font-size: 1.3rem;
+    padding-left: 1.5rem;
 
     &-image {
       border-radius: 20rem;
-      @include default-gradient-reverse();
-      width: 4.5rem;
-      margin: auto;
+      width: 2.5rem;
+      margin: .5rem;
+      margin-top: 0px;
     }
   }
 
   &-title {
-    font-size: 2rem;
-    padding-top: 2rem;
+    font-size: 1.5rem;
+    font-weight: 900;
   }
 
   &-description {
     line-height: 1.8;
     padding-top: 3rem;
     padding-left: 1.8rem;
+    margin: 1rem;
   }
 }
 

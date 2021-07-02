@@ -7,17 +7,17 @@ const NavBar = () => {
     <nav className="navbar">
       <ul className="navbar-nav nav-cust w-100">
         <li className="nav-item">
-          <NavLink className="nav-link text-light" exact to="/">
+          <NavLink className="nav-link text-dark" exact to="/">
             <Icofont icon="test-bulb" className="nav-icons" /> Hopitals
           </NavLink>
         </li>
         <li className="nav-item">
-          <NavLink className="nav-link text-light" to="/reviews">
+          <NavLink className="nav-link text-dark" to="/reviews">
             <Icofont icon="book" className="nav-icons" /> Reviews
           </NavLink>
         </li>
         <li className="nav-item">
-          <NavLink className="nav-link text-light" to="/about">
+          <NavLink className="nav-link text-dark" to="/about">
             <Icofont icon="teacher" className="nav-icons" /> About
           </NavLink>
         </li>
