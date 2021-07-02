@@ -74,7 +74,7 @@ const createAdmin = (data) => (dispatch) => {
 
 const fetchAdmin = (jwtToken) => (dispatch) => {
   const { token, username } = jwtToken;
-  debugger;
+  ;
   const userAxios = Axios.create({
     baseURL: "https://unitreview.herokuapp.com/api/v1/",
     headers: {

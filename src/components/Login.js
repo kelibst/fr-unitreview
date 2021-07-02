@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Button, Form } from "react-bootstrap";
 import Icofont from "react-icofont";
 import { connect } from "react-redux";
+import { unloadError } from "../store/actions/errorAction";
 import { authAdmin, fetchAdmin } from '../store/actions/userAction'
 import "./Auth.scss";
 import ErrOrs from "./ErrOrs";
@@ -23,20 +24,24 @@ class Login extends Component {
     jwtToken = JSON.parse(jwtToken)
     const { fetchAdmin } = this.props
     jwtToken && fetchAdmin(jwtToken)
-    debugger
+    
   }
 
   componentDidUpdate(){
     const {
-      currentUser, history, error, success
+      currentUser, history, error
     } = this.props;
     let jwtToken = localStorage.getItem('jwt')
     jwtToken = JSON.parse(jwtToken)
     
     if (currentUser?.body) {
+
       history.push(`/dashboard/${currentUser?.body?.username}`)
     } 
-
+    if (error?.response?.status === 401) {
+       localStorage.removeItem('jwt')
+      unloadError()
+     }
     
   }
   render() {

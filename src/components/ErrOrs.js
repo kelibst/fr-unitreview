@@ -3,6 +3,7 @@ import { Alert, Button } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { unloadError } from '../store/actions/errorAction';
+import Icofont from 'react-icofont';
 
 class ErrOrs extends Component {
   constructor(props) {
@@ -39,7 +40,7 @@ class ErrOrs extends Component {
           { error?.message && (<h6 className="my-5"> {error?.message}</h6>)}
             { typeof(error) == "object" && <h6>{error?.Email}</h6>}
             {Array.isArray(error) && error.map(err => <h6>{err}</h6>) }
-            {error?.request && !error?.response?.data && <h6 className="my-5">{error.request.response}</h6>}
+            {error?.request && !error?.response?.data && <h6 className="my-5"><Icofont icon="close" /> {error.request.response}</h6>}
           </div>
           <hr />
           <div className="d-flex justify-content-end">
