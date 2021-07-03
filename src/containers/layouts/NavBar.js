@@ -7,8 +7,8 @@ const NavBar = () => {
     <nav className="navbar">
       <ul className="navbar-nav nav-cust w-100">
         <li className="nav-item">
-          <NavLink className="nav-link text-dark" exact to="/">
-            <Icofont icon="test-bulb" className="nav-icons" /> Hopitals
+          <NavLink className="nav-link text-dark" to="/dashboard/">
+            <Icofont icon="chart-bar-graph" className="nav-icons" /> Dashboard
           </NavLink>
         </li>
         <li className="nav-item">

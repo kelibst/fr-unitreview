@@ -6,6 +6,7 @@ import SideBar from '../../containers/layouts/SideBar'
 import { fetchAdmin } from '../../store/actions/userAction'
 import  './Dashboard.scss'
 import Units from './Units';
+import DashNav from './DashNav';
 
 class Dashboard extends Component {
     constructor(props){
@@ -26,12 +27,13 @@ class Dashboard extends Component {
         !currentUser.id && !jwtToken && history.push("/login")
     }
     render() {
-        const { hospital } = this.props
+        const { hospital, currentUser } = this.props
         return (
             <div className="dashboard bg-light">
                 <SideBar hospital={hospital} />
                 <BrowserRouter>
                 <div className="container-fluid bg-white dash-content">
+                    <DashNav currentUser={currentUser} />
                     <Route path="/" component={Units} />
                 </div>
                 </BrowserRouter>
