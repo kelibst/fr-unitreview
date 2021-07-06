@@ -37,6 +37,15 @@ $default-blue: rgb(79, 76, 233);
   font-family: 'Mulish', sans-serif;
 }
 
+.unit-btn{
+  margin: 0 1rem;
+  font-weight: 900;
+}
+
+i.unit-add{
+  margin-left: 2rem;
+}
+
 .nav {
   &-item {
     margin: 0.7rem 0;

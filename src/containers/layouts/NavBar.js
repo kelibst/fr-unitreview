@@ -1,6 +1,7 @@
 import React from "react";
 import Icofont from "react-icofont";
 import { NavLink } from "react-router-dom";
+import AddUnit from "../../components/dashboard/AddUnit";
 
 const NavBar = () => {
   return (
@@ -23,16 +24,7 @@ const NavBar = () => {
         </li>
       </ul>
 
-      {/* <AddHospital
-        status="Add"
-        hospital={{
-          name: "",
-          country: "",
-          address: "",
-          city: "",
-          image: "",
-        }}
-      /> */}
+      <AddUnit />
     </nav>
   );
 };

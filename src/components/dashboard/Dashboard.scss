@@ -2,17 +2,30 @@
     -webkit-box-shadow: 0px 10px 13px -7px #847e7e, 5px 5px 15px 5px rgba(0,0,0,0); 
     box-shadow: 0px 10px 13px -7px #847e7e, 5px 5px 15px 5px rgba(0,0,0,0);
   }
+
 .dashboard {
     position: relative;
     display: flex;
     font-family: 'Mulish', sans-serif;
 }
-
+.stat-chart {
+    border: 1px solid #757575;
+    border-radius: 1rem;
+    padding: .5rem;
+}
+.unit-side-btn {
+    margin: 1rem;
+    padding: 1rem 0;
+    font-weight: 900;
+    border-bottom: 1px solid #e0e0e0;
+    border-top: 1px solid #e0e0e0;
+    width: 100%;
+}
 .dash{
     &-content{
         margin: 3rem;
         border-radius: 1rem;
-        z-index: 10;
+        z-index: 100;
        @include defaul-shadow;
        position: relative
     }
