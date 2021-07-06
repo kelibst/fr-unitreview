@@ -35,7 +35,8 @@ class Dashboard extends Component {
                 <SideBar hospital={hospital} />
                 <BrowserRouter>
                 <div className="container-fluid bg-white dash-content">
-                    { success?.type && <Success /> }
+
+                    { success?.message?.message && <Success /> }
                     { error && <ErrOrs /> }
                     <DashNav currentUser={currentUser} />
                     <Route path="/" component={Units} />

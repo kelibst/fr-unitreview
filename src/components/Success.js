@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
-import { Alert, Button } from 'react-bootstrap';
-import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
-import successWithMessage from '../store/actions/successAction';
-import Icofont from 'react-icofont';
+import React, { Component } from "react";
+import { Alert, Button } from "react-bootstrap";
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
+import successWithMessage from "../store/actions/successAction";
+import Icofont from "react-icofont";
 
 class Success extends Component {
   constructor(props) {
@@ -12,20 +12,44 @@ class Success extends Component {
       show: true,
     };
   }
+  componentDidMount() {
+    const { show } = this.state;
+    const { success } = this.props
+    console.log(success.message.length)
+    debugger
+    show &&
+      setTimeout(() => {
+        const { successWithMessage } = this.props;
+        show &&
+          this.setState(
+            {
+              show: false,
+            },
+            successWithMessage("")
+          );
+      }, 3000);
+  }
   render() {
     const { show } = this.state;
     const { success } = this.props;
 
     const setShow = () => {
-      this.setState({
-        show: false,
-      });
+      const { successWithMessage } = this.props;
+      this.setState(
+        {
+          show: false,
+        },
+        successWithMessage("")
+      );
     };
 
     return (
       <div className="alert-success col-sm-10 col-md-6 col-ld-4 mx-auto">
         <Alert show={show} variant="success">
-          <Alert.Heading> <Icofont icon="tick-mark" /> {success?.message}</Alert.Heading>
+          <Alert.Heading>
+            {" "}
+            <Icofont icon="tick-mark" /> {success?.message}
+          </Alert.Heading>
 
           <div className="d-flex justify-content-end">
             <Button onClick={setShow} variant="outline-success">
@@ -47,7 +71,7 @@ Success.propTypes = {
   successWithMessage: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   success: state.success.message,
 });
 export default connect(mapStateToProps, { successWithMessage })(Success);
