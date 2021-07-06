@@ -12,19 +12,11 @@ class Success extends Component {
       show: true,
     };
   }
-
-  componentWillUnmount() {
-    const { successWithMessage } = this.props;
-    successWithMessage('');
-  }
-
   render() {
     const { show } = this.state;
     const { success } = this.props;
 
     const setShow = () => {
-      const { successWithMessage } = this.props;
-      successWithMessage('');
       this.setState({
         show: false,
       });
@@ -33,7 +25,7 @@ class Success extends Component {
     return (
       <div className="alert-success col-sm-10 col-md-6 col-ld-4 mx-auto">
         <Alert show={show} variant="success">
-          <Alert.Heading> <Icofont icon="tick-mark" /> {success.message}</Alert.Heading>
+          <Alert.Heading> <Icofont icon="tick-mark" /> {success?.message}</Alert.Heading>
 
           <div className="d-flex justify-content-end">
             <Button onClick={setShow} variant="outline-success">

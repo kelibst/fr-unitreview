@@ -7,6 +7,8 @@ import { fetchAdmin } from '../../store/actions/userAction'
 import  './Dashboard.scss'
 import Units from './Units';
 import DashNav from './DashNav';
+import Success from '../Success';
+import ErrOrs from '../ErrOrs';
 
 class Dashboard extends Component {
     constructor(props){
@@ -27,12 +29,14 @@ class Dashboard extends Component {
         !currentUser.id && !jwtToken && history.push("/login")
     }
     render() {
-        const { hospital, currentUser } = this.props
+        const { hospital, currentUser, success, error } = this.props
         return (
             <div className="dashboard bg-light">
                 <SideBar hospital={hospital} />
                 <BrowserRouter>
                 <div className="container-fluid bg-white dash-content">
+                    { success?.type && <Success /> }
+                    { error && <ErrOrs /> }
                     <DashNav currentUser={currentUser} />
                     <Route path="/" component={Units} />
                 </div>
