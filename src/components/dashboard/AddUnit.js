@@ -69,8 +69,8 @@ class AddUnit extends Component {
         <Modal.Body>
         <div className="form-container">
         <Form onSubmit={handleSubmit}>
-            {success && <Success />}
-          {error && <ErrOrs />}
+        { success?.message?.message && <Success /> }
+        { error.response && <ErrOrs /> }
           <Form.Group controlId="name" className="pb-3">
           <Form.Label>Enter a unique Unit name</Form.Label> 
             <Form.Control

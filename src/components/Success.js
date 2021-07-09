@@ -14,9 +14,6 @@ class Success extends Component {
   }
   componentDidMount() {
     const { show } = this.state;
-    const { success } = this.props
-    console.log(success.message.length)
-    debugger
     show &&
       setTimeout(() => {
         const { successWithMessage } = this.props;

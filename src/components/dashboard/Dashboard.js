@@ -25,7 +25,7 @@ class Dashboard extends Component {
         const { error, history, currentUser } = this.props;
         let jwtToken = localStorage.getItem('jwt')
         jwtToken = JSON.parse(jwtToken)
-        error?.response?.status === 401 && history.push("/login")
+        // error?.response?.status === 401 && history.push("/login")
         !currentUser.id && !jwtToken && history.push("/login")
     }
     render() {
@@ -37,7 +37,7 @@ class Dashboard extends Component {
                 <div className="container-fluid bg-white dash-content">
 
                     { success?.message?.message && <Success /> }
-                    { error && <ErrOrs /> }
+                    { error?.response && <ErrOrs /> }
                     <DashNav currentUser={currentUser} />
                     <Route path="/" component={Units} />
                 </div>

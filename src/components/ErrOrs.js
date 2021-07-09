@@ -22,7 +22,7 @@ class ErrOrs extends Component {
   render() {
     const { show } = this.state;
     const { errors } = this.props;
-    const { error } = errors?.response?.data
+    // const { error } = errors?.response?.data
     const setShow = () => {
       
       const { unloadError, errors } = this.props;
@@ -37,10 +37,14 @@ class ErrOrs extends Component {
       <div>
         <Alert show={show} variant="danger">
           <div>
-          { error?.message && (<h6 className="my-5"> {error?.message}</h6>)}
-            { typeof(error) == "object" && <h6>{error?.Email}</h6>}
-            {Array.isArray(error) && error.map(err => <h6>{err}</h6>) }
-            {error?.request && !error?.response?.data && <h6 className="my-5"><Icofont icon="close" /> {error.request.response}</h6>}
+          {/* { error?.message && (<h6 className="my-5"> {error?.message}</h6>)} */}
+          {/* { errors?.response && (<h6 className="my-1"> Sorry something went wrong</h6>)} */}
+          
+            { typeof(errors) == "object" && <h6>{errors?.Email}</h6>}
+            {Array.isArray(errors) && errors.map(err => <h6>{err}</h6>) }
+            {errors?.response?.data && Object.entries(errors?.response?.data?.error).map(error => <h6 className="my-2">{error}</h6>)}
+            {errors?.request && !errors?.response?.data && <h6 className="my-5"><Icofont icon="close" /> {errors.request.response}</h6>}
+            
           </div>
           <hr />
           <div className="d-flex justify-content-end">

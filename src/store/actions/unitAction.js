@@ -21,9 +21,14 @@ import Axios from 'axios';
         type: 'SUCC_MSG',
         payload: succPayload,
       })})
-      .catch(err => dispatch({
+      .catch(err => {
+        dispatch({
         type: 'CREATE_ERROR',
-        payload: err,
-      }));
+        payload: {
+          ...err,
+          response: err?.response
+        },
+      })
+    });
   };
 export { createUnit }  
