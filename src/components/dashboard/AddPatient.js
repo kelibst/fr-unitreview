@@ -1,12 +1,12 @@
 import React, { Component } from "react";
-import { Button, Form, Modal } from "react-bootstrap";
+import { Button, ButtonGroup, Form, Modal } from "react-bootstrap";
 import Icofont from "react-icofont";
 import { connect } from "react-redux";
-import { createUnit } from "../../store/actions/unitAction";
+import { createPatient } from "../../store/actions/PatientAction";
 import ErrOrs from "../ErrOrs";
 import Success from "../Success";
 
-class AddUnit extends Component {
+class AddPatient extends Component {
   constructor(props) {
     super(props);
 
@@ -14,12 +14,12 @@ class AddUnit extends Component {
       show: false,
     };
   }
+
   render() {
     const handleShow = () => {
       this.setState({
         show: true,
         formData: {
-          administrator_id: 1,
           hospital_id: 1,
         },
       });
@@ -30,7 +30,6 @@ class AddUnit extends Component {
         show: false,
       });
     };
-
     const handleChange = (e) => {
       const { id, value } = e.target;
       this.setState({
@@ -46,12 +45,14 @@ class AddUnit extends Component {
       let jwtToken = localStorage.getItem("jwt");
       jwtToken = JSON.parse(jwtToken);
       const { formData, show } = this.state;
-      const { createUnit, success } = this.props;
-      jwtToken && createUnit(jwtToken, formData);
-      success?.type === "unit_create_success" && show && handleClose();
+      const { createPatient, success } = this.props;
+      debugger
+      jwtToken && createPatient(jwtToken, formData);
+      success?.type === "patient_create_success" && show && handleClose();
     };
     const { show } = this.state;
     const { error, success } = this.props;
+
     return (
       <div className="unit-side-btn">
         <Button
@@ -59,12 +60,12 @@ class AddUnit extends Component {
           className="btn unit-btn"
           onClick={handleShow}
         >
-          Add Unit
+          Add new patient
           <Icofont icon="ui-add" className="unit-add" />
         </Button>
         <Modal show={show} onHide={handleClose}>
           <Modal.Header closeButton>
-            <Modal.Title>Add a new Unit</Modal.Title>
+            <Modal.Title>Add a new Patient</Modal.Title>
           </Modal.Header>
           <Modal.Body>
             <div className="form-container">
@@ -72,7 +73,7 @@ class AddUnit extends Component {
                 {success?.message?.message && <Success />}
                 {error.response && <ErrOrs />}
                 <Form.Group controlId="name" className="pb-3">
-                  <Form.Label>Enter a unique Unit name</Form.Label>
+                  <Form.Label>Enter a unique Patient name</Form.Label>
                   <Form.Control
                     required
                     type="text"
@@ -82,8 +83,8 @@ class AddUnit extends Component {
                   />
                 </Form.Group>
 
-                <Form.Group controlId="unithead" className="pb-3">
-                  <Form.Label>Enter the head of the unit's name.</Form.Label>
+                <Form.Group controlId="address" className="pb-3">
+                  <Form.Label>Enter patient's address.</Form.Label>
                   <Form.Control
                     required
                     type="text"
@@ -93,6 +94,31 @@ class AddUnit extends Component {
                   />
                 </Form.Group>
 
+                <Form.Group controlId="email" className="pb-3">
+                  <Form.Label>Enter patient's email address.</Form.Label>
+                  <Form.Control
+                    required
+                    type="email"
+                    //   placeholder="Enter the head of the unit's name."
+                    //   value={address}
+                    onChange={handleChange}
+                  />
+                </Form.Group>
+
+                <Form.Group controlId="phone" className="pb-3">
+                  <Form.Label>Enter patient's phone number.</Form.Label>
+                  <Form.Control
+                    required
+                    type="phone"
+                    //   placeholder="Enter the head of the unit's name."
+                    //   value={address}
+                    onChange={handleChange}
+                  />
+                </Form.Group>
+                <ButtonGroup controlId="sex" aria-label="gender">
+                  <Button variant="primary">Male</Button>
+                  <Button variant="success">Female</Button>
+                </ButtonGroup>
                 <Button className="btn unit-form-btn w-100" type="submit">
                   Submit
                 </Button>
@@ -110,4 +136,4 @@ const mapStateToProps = (state) => ({
   success: state.success,
   error: state.errors.err,
 });
-export default connect(mapStateToProps, { createUnit })(AddUnit);
+export default connect(mapStateToProps, { createPatient })(AddPatient);

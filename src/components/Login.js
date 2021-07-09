@@ -84,7 +84,7 @@ class Login extends Component {
               </p>
               <div className="form-footer">
                 { success?.type && <Success /> }
-                { error && <ErrOrs />}
+                { error?.response && <ErrOrs />}
               </div>
             </div>
           </div>
