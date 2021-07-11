@@ -38,9 +38,7 @@ class SideBar extends Component {
               The right place to tell the world how a hospital treated you.
             </div>
           </header>
-
           <NavBar />
-
           {/* <Footer /> */}
         </aside>
       </div>

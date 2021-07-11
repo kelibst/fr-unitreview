@@ -53,7 +53,7 @@ class AddUnit extends Component {
     const { show } = this.state;
     const { error, success } = this.props;
     return (
-      <div className="unit-side-btn">
+      <div className="side-btn">
         <Button
           variant="transparent"
           className="btn unit-btn"

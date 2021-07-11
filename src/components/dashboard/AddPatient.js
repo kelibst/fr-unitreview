@@ -46,7 +46,7 @@ class AddPatient extends Component {
       jwtToken = JSON.parse(jwtToken);
       const { formData, show } = this.state;
       const { createPatient, success } = this.props;
-      debugger
+      debugger;
       jwtToken && createPatient(jwtToken, formData);
       success?.type === "patient_create_success" && show && handleClose();
     };
@@ -54,7 +54,7 @@ class AddPatient extends Component {
     const { error, success } = this.props;
 
     return (
-      <div className="unit-side-btn">
+      <div className="side-btn">
         <Button
           variant="transparent"
           className="btn unit-btn"
@@ -115,10 +115,18 @@ class AddPatient extends Component {
                     onChange={handleChange}
                   />
                 </Form.Group>
-                <ButtonGroup controlId="sex" aria-label="gender">
-                  <Button variant="primary">Male</Button>
-                  <Button variant="success">Female</Button>
-                </ButtonGroup>
+
+                <div className="form-group my-4" name="sex">
+                  <label>Gender</label>
+                  <label className="radio-inline mx-3">
+                    <input type="radio" name="gender" id="sex" value="female" onChange={handleChange}/>
+                    Female
+                  </label>
+                  <label className="radio-inline mx-3">
+                    <input type="radio" name="gender" id="sex" value="male" onChange={handleChange}/>
+                    Male
+                  </label>
+                </div>
                 <Button className="btn unit-form-btn w-100" type="submit">
                   Submit
                 </Button>

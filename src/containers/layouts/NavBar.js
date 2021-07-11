@@ -24,9 +24,10 @@ const NavBar = () => {
           </NavLink>
         </li>
       </ul>
-
+      <div className="side-btn-unit">
       <AddUnit />
       <AddPatient />
+      </div>
     </nav>
   );
 };
