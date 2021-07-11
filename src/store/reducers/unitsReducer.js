@@ -1,14 +1,15 @@
 const initialState = {
-  units: {}
+  units: {},
+  unit: {}
 };
-const fetchReducer = (state = initialState, action) => {
+const unitsReducer = (state = initialState, action) => {
   switch (action.type) {
-    case 'GET_HOSPITAL':
+    case 'GET_UNIT':
       return {
         ...state,
-        hospitalData: action.payload,
+        unit: action.payload,
       };
-    case 'GET_UNIT':
+    case 'GET_UNITS':
       return {
         ...state,
         units: action.payload

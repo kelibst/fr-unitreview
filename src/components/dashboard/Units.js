@@ -1,21 +1,22 @@
 import React, { Component } from "react";
 import Chart from "react-google-charts";
 import { connect } from "react-redux";
-import { getUnits } from "../../store/actions/fetchAction";
+import { fetchUnits } from "../../store/actions/unitAction";
 import "./Dashboard.scss";
+import Unit from "./Unit";
 
 class Units extends Component {
-  constructor(props){
-    super(props)
+  constructor(props) {
+    super(props);
   }
-  componentDidMount(){
-    const { getUnits } = this.props
-    let jwtToken = localStorage.getItem('jwt')
-    jwtToken = JSON.parse(jwtToken)
-    getUnits(jwtToken)
+  componentDidMount() {
+    const { fetchUnits } = this.props;
+    let jwtToken = localStorage.getItem("jwt");
+    jwtToken = JSON.parse(jwtToken);
+    fetchUnits(jwtToken);
   }
   render() {
-    
+    const { units } = this.props;
     return (
       <div className="unit-cont">
         <div className="d-flex">
@@ -113,6 +114,9 @@ class Units extends Component {
             </div>
           </div>
         </div>
+        <div className="units-content">
+          {units?.length  && units.map((unit) => <Unit unit={unit} />)}
+        </div>
       </div>
     );
   }
@@ -121,6 +125,7 @@ const mapStateToProps = (state) => ({
   hospital: state.hospital,
   currentUser: state.userData.currentUser,
   success: state.success,
-  error: state.errors.err
+  error: state.errors.err,
+  units: state.unitsData.units,
 });
-export default connect (mapStateToProps, {getUnits})(Units);
+export default connect(mapStateToProps, { fetchUnits })(Units);

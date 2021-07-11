@@ -17,7 +17,7 @@ class Dashboard extends Component {
     componentDidMount(){
         let jwtToken = localStorage.getItem('jwt')
         jwtToken = JSON.parse(jwtToken)
-        const { fetchAdmin , currentUser,  } = this.props
+        const { fetchAdmin , currentUser, fetchUnits } = this.props
         !currentUser.id && jwtToken && fetchAdmin(jwtToken)
     }
 
@@ -51,6 +51,6 @@ const mapStateToProps = (state) => ({
     hospital: state.hospital,
     currentUser: state.userData.currentUser,
     success: state.success,
-    error: state.errors.err
+    error: state.errors.err,
   });
-export default connect(mapStateToProps, {  fetchAdmin })(Dashboard)
+export default connect(mapStateToProps, {  fetchAdmin})(Dashboard)

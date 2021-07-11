@@ -35,6 +35,8 @@
     z-index: 100;
     @include defaul-shadow;
     position: relative;
+    overflow-y: scroll;
+    max-height: 800px;
   }
 
   &-nav-title {
@@ -112,3 +114,15 @@ button.close {
         background-color: $danger;
     }
 }
+
+.unit-card {
+  padding: 1rem;
+  margin: 1rem;
+  border-radius: .5rem;
+  border: 1px solid $warning;
+  
+  &:hover {
+    background-color: $light;
+  }
+}
+

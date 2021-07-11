@@ -31,4 +31,32 @@ import Axios from 'axios';
       })
     });
   };
-export { createUnit }  
+
+  const fetchUnits = jwtToken => dispatch => {
+    const { token } = jwtToken;
+    
+    const getUnitsAxios = Axios.create({
+      baseURL: "https://unitreview.herokuapp.com/api/v1/",
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+
+    getUnitsAxios.get('/units.json')
+      .then((res) => {
+        dispatch({
+          type: 'GET_UNITS',
+          payload: res.data,
+        })
+      }).catch(err => {
+
+        dispatch({
+        type: 'CREATE_ERROR',
+        payload:  {
+          ...err,
+          response: err?.response
+        },
+      })
+    });
+  }
+export { createUnit, fetchUnits }  
