@@ -13,7 +13,7 @@ class Units extends Component {
     const { fetchUnits } = this.props;
     let jwtToken = localStorage.getItem("jwt");
     jwtToken = JSON.parse(jwtToken);
-    fetchUnits(jwtToken);
+    jwtToken?.exp && fetchUnits(jwtToken);
   }
   render() {
     const { units } = this.props;

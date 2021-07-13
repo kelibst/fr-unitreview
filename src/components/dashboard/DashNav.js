@@ -9,7 +9,8 @@ class DashNav extends Component {
         }
     }
     render() {
-        const { currentUser } = this.props
+        const { currentUser, logUserOut } = this.props
+       
         return (
             <nav className="nav d-flex m-3 justify-content-between">
                 <div className="dash-nav-header">
@@ -28,7 +29,7 @@ class DashNav extends Component {
                     <div className="dash-user">
                         <div className="dash-user-icon"><Icofont icon="user" /></div>
                         <p className="dash-user-name">{currentUser?.body?.name}</p>
-                        <button className="btn--exit"><Icofont icon="exit"/></button>
+                        <button className="btn--exit" onClick={()=> logUserOut()}><Icofont icon="exit"/></button>
                     </div>
                 </div>
             </nav>

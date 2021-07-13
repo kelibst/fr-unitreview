@@ -17,6 +17,13 @@ const createPatient = (jwtToken, data) => dispatch => {
           message: "Patient  was successfully added!",
           type: "patient_create_success",
         };
+
+        //DISPATCH AND ACTION TO UPDATE THE STATE FOR PATIENTS AND ADD THE NEWLY CREATED PATIENT
+        dispatch({
+          type: "UPDATE_PATIENTS",
+          payload: res.data,
+        });
+
         dispatch({
         type: 'SUCC_MSG',
         payload: succPayload,

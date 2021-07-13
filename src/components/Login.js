@@ -23,7 +23,7 @@ class Login extends Component {
     let jwtToken = localStorage.getItem('jwt')
     jwtToken = JSON.parse(jwtToken)
     const { fetchAdmin } = this.props
-    jwtToken && fetchAdmin(jwtToken)
+    jwtToken?.token?.length && fetchAdmin(jwtToken)
     const { currentUser, history } = this.props
     currentUser?.body && history.push(`/dashboard/${currentUser?.body?.username}`)
   }

@@ -6,7 +6,7 @@ import MobileNavBar from "./MobileNavBar";
 
 class SideBar extends Component {
   render() {
-    const { hospital } = this.props;
+    const { hospital, user } = this.props;
     return (
       <div className=" bg-light col-sm-4 col-md-3 col-xl-2">
         <aside className="text-dark d-sm-none">
@@ -38,7 +38,7 @@ class SideBar extends Component {
               The right place to tell the world how a hospital treated you.
             </div>
           </header>
-          <NavBar />
+          <NavBar user={user} />
           {/* <Footer /> */}
         </aside>
       </div>

@@ -14,6 +14,15 @@ class AddUnit extends Component {
       show: false,
     };
   }
+  componentDidUpdate(){
+    const { show } = this.state
+    const { success } = this.props
+
+    success?.type === "unit_create_success" && show && this.setState({
+      ...this.state,
+      show: false
+    })
+  }
   render() {
     const handleShow = () => {
       this.setState({
@@ -40,15 +49,15 @@ class AddUnit extends Component {
           [id]: value,
         },
       });
+      success?.type === "unit_create_success" && show && handleClose();
     };
     const handleSubmit = (e) => {
       e.preventDefault();
       let jwtToken = localStorage.getItem("jwt");
       jwtToken = JSON.parse(jwtToken);
-      const { formData, show } = this.state;
-      const { createUnit, success } = this.props;
+      const { formData } = this.state;
+      const { createUnit } = this.props;
       jwtToken && createUnit(jwtToken, formData);
-      success?.type === "unit_create_success" && show && handleClose();
     };
     const { show } = this.state;
     const { error, success } = this.props;

@@ -46,7 +46,7 @@ class AddPatient extends Component {
       jwtToken = JSON.parse(jwtToken);
       const { formData, show } = this.state;
       const { createPatient, success } = this.props;
-      debugger;
+      ;
       jwtToken && createPatient(jwtToken, formData);
       success?.type === "patient_create_success" && show && handleClose();
     };
