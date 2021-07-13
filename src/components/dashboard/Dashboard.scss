@@ -1,0 +1,128 @@
+@import "~bootstrap/scss/bootstrap";
+@mixin defaul-shadow {
+  -webkit-box-shadow: 0px 10px 13px -7px #847e7e,
+    5px 5px 15px 5px rgba(0, 0, 0, 0);
+  box-shadow: 0px 10px 13px -7px #847e7e, 5px 5px 15px 5px rgba(0, 0, 0, 0);
+}
+
+.dashboard {
+  position: relative;
+  display: flex;
+  font-family: "Mulish", sans-serif;
+}
+.stat-chart {
+  border: 1px solid #757575;
+  border-radius: 1rem;
+  padding: 0.5rem;
+}
+
+.side-btn {
+  font-weight: 900;
+
+  width: 100%;
+  &-unit {
+    margin: 1rem;
+    padding: 1rem 0;
+    border-bottom: 1px solid #e0e0e0;
+    border-top: 1px solid #e0e0e0;
+  }
+}
+
+.dash {
+  &-content {
+    margin: 3rem;
+    border-radius: 1rem;
+    z-index: 100;
+    @include defaul-shadow;
+    position: relative;
+    overflow-y: scroll;
+    max-height: 800px;
+  }
+
+  &-nav-title {
+    font-weight: 800;
+  }
+
+  &-nav-header {
+    padding-top: 1rem;
+  }
+
+  &-date {
+    font-size: 0.8rem;
+    color: $danger;
+  }
+
+  &-link {
+    font-size: 1.4rem;
+    padding: 0.5rem 1rem;
+    text-decoration: none;
+    color: black;
+
+    &:hover {
+      color: lightslategray;
+    }
+  }
+
+  &-ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &-user {
+    display: flex;
+    align-items: center;
+    font-weight: 700;
+
+    &-name {
+      margin: 0;
+    }
+
+    &-icon {
+      padding: 0.5rem 0.8rem;
+      font-size: 0.8rem;
+      border-radius: 5rem;
+      background: $danger;
+      margin: 0 1rem;
+    }
+  }
+}
+
+.bd-rt {
+  border-right: 1px solid black;
+}
+
+.noti {
+  position: relative;
+  &-ink {
+    position: absolute;
+    top: 12px;
+    left: 32px;
+    content: "";
+    width: 10px;
+    height: 10px;
+    background-color: lightcoral;
+    border-radius: 220px;
+  }
+}
+button.close {
+    border: none;
+    background: red;
+    padding: 2px .5rem;
+    border-radius: 1rem;
+    &hover {
+        background-color: $danger;
+    }
+}
+
+.unit-card {
+  padding: 1rem;
+  margin: 1rem;
+  border-radius: .5rem;
+  border: 1px solid $warning;
+  
+  &:hover {
+    background-color: $light;
+  }
+}
+

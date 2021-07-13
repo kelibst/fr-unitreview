@@ -2,7 +2,8 @@ import React, { Component } from "react";
 import { Button, Form } from "react-bootstrap";
 import Icofont from "react-icofont";
 import { connect } from "react-redux";
-import { authAdmin } from '../store/actions/userAction'
+import { unloadError } from "../store/actions/errorAction";
+import { authAdmin, fetchAdmin } from '../store/actions/userAction'
 import "./Auth.scss";
 import ErrOrs from "./ErrOrs";
 import Success from "./Success";
@@ -17,17 +18,28 @@ class Login extends Component {
       }
     }
   }
+
+  componentDidMount(){
+    let jwtToken = localStorage.getItem('jwt')
+    jwtToken = JSON.parse(jwtToken)
+    const { fetchAdmin } = this.props
+    jwtToken?.token?.length && fetchAdmin(jwtToken)
+    const { currentUser, history } = this.props
+    currentUser?.body && history.push(`/dashboard/admin`)
+  }
+
   componentDidUpdate(){
     const {
-      currentUser, history, error, success
+      currentUser, history, error
     } = this.props;
     let jwtToken = localStorage.getItem('jwt')
     jwtToken = JSON.parse(jwtToken)
     
-    if (currentUser?.body) {
-      history.push(`/dashboard/${currentUser?.body?.username}`)
-    } 
-
+    currentUser?.body && history.push(`/dashboard/admin`)
+    if (error?.response?.status === 401) {
+      //  localStorage.removeItem('jwt')
+      unloadError()
+     }
     
   }
   render() {
@@ -72,7 +84,7 @@ class Login extends Component {
               </p>
               <div className="form-footer">
                 { success?.type && <Success /> }
-                { error && <ErrOrs />}
+                { error?.response && <ErrOrs />}
               </div>
             </div>
           </div>
@@ -122,4 +134,4 @@ const mapStateToProps = (state) => ({
   success: state.success,
   error: state.errors.err
 });
-export default connect(mapStateToProps, { authAdmin })(Login);
+export default connect(mapStateToProps, { authAdmin, fetchAdmin })(Login);

@@ -1,7 +1,6 @@
 /* eslint-disable no-case-declarations */
 const initialState = {
   hospitalData: {},
-  user: {},
 };
 const fetchReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -10,6 +9,11 @@ const fetchReducer = (state = initialState, action) => {
         ...state,
         hospitalData: action.payload,
       };
+    case 'GET_SOMETHING':
+      return {
+        ...state,
+        units: action.payload
+      }
     default:
       return state;
   }

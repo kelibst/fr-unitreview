@@ -15,5 +15,25 @@ const fetchHospital = () => dispatch => {
     }));
 };
 
+// const getUnits = (jwtToken) => dispatch => {
+//   const { token } = jwtToken;
+//   const getUnitAxios = Axios.create({
+//     baseURL: "https://unitreview.herokuapp.com/api/v1/",
+//     headers: {
+//       Authorization: `Bearer ${token}`,
+//     },
+//   });
+ 
+//   getUnitAxios.get('/units.json')
+//     .then(res => dispatch({
+//       type: 'GET_UNIT',
+//       payload: res.data,
+//     }))
+//     .catch(err => dispatch({
+//       type: 'CREATE_ERROR',
+//       payload: err,
+//     }));
+// };
+
 
 export {fetchHospital};

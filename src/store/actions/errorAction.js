@@ -8,7 +8,7 @@ const searchError = message => dispatch => {
 const unloadError = () => dispatch => {
   dispatch({
     type: 'UNLOAD_ERROR',
-    payload: '',
+    payload: {},
   });
 };
 export { searchError, unloadError };

@@ -1,38 +1,34 @@
 import React from "react";
 import Icofont from "react-icofont";
 import { NavLink } from "react-router-dom";
+import AddPatient from "../../components/dashboard/AddPatient";
+import AddUnit from "../../components/dashboard/AddUnit";
 
-const NavBar = () => {
+const NavBar = (props) => {
+  const {user} = props
   return (
     <nav className="navbar">
       <ul className="navbar-nav nav-cust w-100">
         <li className="nav-item">
-          <NavLink className="nav-link text-light" exact to="/">
-            <Icofont icon="test-bulb" className="nav-icons" /> Hopitals
+          <NavLink className="nav-link text-dark" exact to="/dashboard/admin">
+            <Icofont icon="chart-bar-graph" className="nav-icons" /> Dashboard
           </NavLink>
         </li>
         <li className="nav-item">
-          <NavLink className="nav-link text-light" to="/reviews">
-            <Icofont icon="book" className="nav-icons" /> Reviews
+          <NavLink className="nav-link text-dark" to={`/dashboard/admin/reviews`}>
+            <Icofont icon="book" className="nav-icons" />{" "} Reviews
           </NavLink>
         </li>
         <li className="nav-item">
-          <NavLink className="nav-link text-light" to="/about">
-            <Icofont icon="teacher" className="nav-icons" /> About
+          <NavLink className="nav-link text-dark" to="/dashboard/admin/clients">
+            <Icofont icon="teacher" className="nav-icons" /> {" "} Patients
           </NavLink>
         </li>
       </ul>
-
-      {/* <AddHospital
-        status="Add"
-        hospital={{
-          name: "",
-          country: "",
-          address: "",
-          city: "",
-          image: "",
-        }}
-      /> */}
+      <div className="side-btn-unit">
+      <AddUnit />
+      <AddPatient />
+      </div>
     </nav>
   );
 };
