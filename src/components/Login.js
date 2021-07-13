@@ -25,7 +25,7 @@ class Login extends Component {
     const { fetchAdmin } = this.props
     jwtToken?.token?.length && fetchAdmin(jwtToken)
     const { currentUser, history } = this.props
-    currentUser?.body && history.push(`/dashboard/${currentUser?.body?.username}`)
+    currentUser?.body && history.push(`/dashboard/admin`)
   }
 
   componentDidUpdate(){
@@ -35,7 +35,7 @@ class Login extends Component {
     let jwtToken = localStorage.getItem('jwt')
     jwtToken = JSON.parse(jwtToken)
     
-    currentUser?.body && history.push(`/dashboard/${currentUser?.body?.username}`)
+    currentUser?.body && history.push(`/dashboard/admin`)
     if (error?.response?.status === 401) {
       //  localStorage.removeItem('jwt')
       unloadError()

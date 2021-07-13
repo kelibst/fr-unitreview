@@ -6,23 +6,22 @@ import AddUnit from "../../components/dashboard/AddUnit";
 
 const NavBar = (props) => {
   const {user} = props
-  console.log(user)
   return (
     <nav className="navbar">
       <ul className="navbar-nav nav-cust w-100">
         <li className="nav-item">
-          <NavLink className="nav-link text-dark" to="/dashboard/">
+          <NavLink className="nav-link text-dark" exact to="/dashboard/admin">
             <Icofont icon="chart-bar-graph" className="nav-icons" /> Dashboard
           </NavLink>
         </li>
         <li className="nav-item">
-          <NavLink className="nav-link text-dark" to={`/dashboard/${user?.body?.username}/clients`}>
-            <Icofont icon="book" className="nav-icons" />{" "} Patients
+          <NavLink className="nav-link text-dark" to={`/dashboard/admin/reviews`}>
+            <Icofont icon="book" className="nav-icons" />{" "} Reviews
           </NavLink>
         </li>
         <li className="nav-item">
-          <NavLink className="nav-link text-dark" to="/about">
-            <Icofont icon="teacher" className="nav-icons" /> About
+          <NavLink className="nav-link text-dark" to="/dashboard/admin/clients">
+            <Icofont icon="teacher" className="nav-icons" /> {" "} Patients
           </NavLink>
         </li>
       </ul>
