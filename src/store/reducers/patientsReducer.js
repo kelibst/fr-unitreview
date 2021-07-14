@@ -12,7 +12,7 @@ const patientReducer = (state = initState, action) => {
             }
         case "UPDATE_PATIENTS":
             const res = action.payload;
-            const patientsUpdate = [...state.patients, res]
+            const patientsUpdate = [ res, ...state.patients]
             return {
                 ...state,
                 patients: patientsUpdate

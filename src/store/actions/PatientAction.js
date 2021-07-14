@@ -35,5 +35,33 @@ const createPatient = (jwtToken, data) => dispatch => {
       })
     });
   };
+  const fetchPatients = (jwtToken) => (dispatch) => {
+    const { token } = jwtToken;
+  
+    const getPatientsAxios = Axios.create({
+      baseURL: "https://unitreview.herokuapp.com/",
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+  
+    getPatientsAxios
+      .get("/reviewers.json")
+      .then((res) => {
+        dispatch({
+          type: "GET_PATIENTS",
+          payload: res.data,
+        });
+      })
+      .catch((err) => {
+        dispatch({
+          type: "CREATE_ERROR",
+          payload: {
+            ...err,
+            response: err?.response,
+          },
+        });
+      });
+  };
 
-  export { createPatient }
+  export { createPatient, fetchPatients }

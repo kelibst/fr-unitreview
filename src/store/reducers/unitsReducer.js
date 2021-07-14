@@ -17,7 +17,7 @@ const unitsReducer = (state = initialState, action) => {
     case "UPDATE_UNITS":
       
       const res = action.payload;
-      const unitUpdate = [...state.units, res ];
+      const unitUpdate = [ res, ...state.units];
       
       return {
         ...state,
