@@ -1,6 +1,7 @@
 /* eslint-disable no-case-declarations */
 const initialState = {
   currentUser: {},
+  currentPatient: {},
 };
 
 const userReducer = (state = initialState, action) => {

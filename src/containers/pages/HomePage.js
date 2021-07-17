@@ -22,7 +22,7 @@ class HomePage extends Component {
               {hospital?.body?.name}
             </Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
-            <Nav.Link className="btn btn-lime" href="/login">
+            <Nav.Link className="btn btn-lime" href="/client/login">
               Login
             </Nav.Link>
           </Navbar>

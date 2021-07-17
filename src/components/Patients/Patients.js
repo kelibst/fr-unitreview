@@ -16,6 +16,7 @@ class Patients extends Component {
   }
   render() {
     const { patients } = this.props;
+    const  isNotEmpty = (obj) => Object.keys(obj).length !== 0;
     return (
       <div className="patients">
         <h1 className="h6 ps-3 fw-bold">List of patients</h1>
@@ -26,7 +27,7 @@ class Patients extends Component {
             <p className="pa-tr">Phone</p>
         </div>
         <div className="units-content pt-3">
-          {patients && patients.map((patient) => <Patient patient={patient} />)}
+          {isNotEmpty(patients) && patients.map((patient) => <Patient patient={patient} />)}
         </div>
       </div>
     );

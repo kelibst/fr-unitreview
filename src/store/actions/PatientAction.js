@@ -64,4 +64,77 @@ const createPatient = (jwtToken, data) => dispatch => {
       });
   };
 
-  export { createPatient, fetchPatients }
+  const loginPatientIn = (data) => (dispatch) => {
+    const url = "https://unitreview.herokuapp.com/api/v1/auth/login.json";
+    Axios.post(url, data)
+      .then(res => {
+        debugger 
+        const jwtToken = JSON.stringify(res.data);
+      localStorage.setItem("patJwt", jwtToken);
+      const { username, token } = res.data;
+      const userAxios = Axios.create({
+        baseURL: "https://unitreview.herokuapp.com/api/v1/",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      userAxios
+        .get(`/reviewers/${username}.json`)
+        .then(res => {
+          const succPayload = {
+            message: "Welcome Back!",
+            type: "login_success",
+          };
+
+          dispatch({
+            type: "SUCC_MSG",
+            payload: succPayload,
+          });
+
+          dispatch({
+            type: "GET_PATIENT",
+            payload: res.data,
+          });
+        })
+      }).catch((err) =>
+      dispatch({
+        type: "CREATE_ERROR",
+        payload: err,
+      })
+    );
+  }
+
+  const fetchPatient = (jwtToken) => (dispatch) => {
+    const { token, username } = jwtToken;
+    ;
+    const userAxios = Axios.create({
+      baseURL: "https://unitreview.herokuapp.com/api/v1/",
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    userAxios.get(`/reviewers/${username}.json`).then((res) => {
+      const succPayload = {
+        message: "Welcome Back!",
+        type: "login_success",
+      };
+  
+      dispatch({
+        type: "SUCC_MSG",
+        payload: succPayload,
+      });
+  
+      dispatch({
+        type: "GET_PATIENT",
+        payload: res.data,
+      })
+    }).catch((err) =>
+        dispatch({
+          type: "CREATE_ERROR",
+          payload: err,
+        })
+      );;
+  };
+
+
+  export { createPatient, fetchPatients, loginPatientIn, fetchPatient }

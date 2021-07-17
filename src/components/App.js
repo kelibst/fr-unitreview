@@ -8,6 +8,7 @@ import HomePage from "../containers/pages/HomePage";
 import Login from "./Login";
 import SignUp from "./SignUp";
 import Dashboard from "./dashboard/Dashboard";
+import PatientLogin from "./Patients/PatientLogin";
 
 class App extends Component {
   componentDidMount() {
@@ -21,6 +22,7 @@ class App extends Component {
         <div className="wrapper d-block">
           <Switch>
             <Route exact path="/login" component ={Login} />
+            <Route exact path="/client/login" component ={PatientLogin} />
             <Route exact path="/create-account" component={SignUp} />
             <Route exact path="/about" component={About} />
             <Route path="/dashboard/admin" component={Dashboard}/>
