@@ -3,13 +3,13 @@ import "./HomePage.scss";
 import { Component } from "react";
 import heart from "../../assets/imges/heart.svg";
 import HomeOverview from "./HomeOverview";
+import Clients from "./Clients";
 
 class HomePage extends Component {
   render() {
-    const { hospital, match} = this.props;
+    const { hospital, location} = this.props;
     
-    const {path} = match
-   
+    const {pathname} = location
     return (
       <div className="content">
         <header className="home-header">
@@ -38,7 +38,7 @@ class HomePage extends Component {
                 <div className="hero-card-cont">7/7 days</div>
               </div>
             </div>
-            <div className="hero-side d-flex align-items-center col-md-6">
+            <div className="hero-side d-flex align-items-center justify-content-center col-md-6">
               <div className="hero-side-bg">
                 
               </div>
@@ -46,8 +46,8 @@ class HomePage extends Component {
           </div>
         </header>
 
-       { path === "/" && <HomeOverview />}
-
+       { pathname === "/" && <HomeOverview />}
+       { pathname === "/client/dashboard" && <Clients />}
         <footer className="home-footer text-center my-2">
           <div className="copyright fw-bold">
             Copyright &copy; 2021 {hospital?.body?.name}
