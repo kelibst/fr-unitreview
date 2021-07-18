@@ -40,6 +40,8 @@ class App extends Component {
 }
 const mapStateToProps = (state) => ({
   hospital: state.hospital,
+  currentUser: state.userData.currentUser,
+  patient: state.patientsData.patient,
 });
 
 export default connect(mapStateToProps, { fetchHospital })(App);

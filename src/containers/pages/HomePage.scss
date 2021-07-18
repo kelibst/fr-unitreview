@@ -103,12 +103,15 @@ $primary-color: rgb(233, 90, 7);
   background-size: contain;
 }
 .hero-side-bg{
-  // background-image: url(../../assets/imges/ambulance.svg);
+  background-image: url(../../assets/imges/ambulance.svg);
   background-size: cover;
     background-size: cover;
    background-repeat: no-repeat;
    background-position: center; 
-   background-image: url(../../assets/imges/doctors.svg);
+   width: 50%;
+   height: 50%;
+   border-radius: 340rem;
+  //  background-image: url(../../assets/imges/doctors.svg);
 }
 
 .hero-title-container {
