@@ -3,11 +3,16 @@ import "./HomePage.scss";
 import { Component } from "react";
 import heart from "../../assets/imges/heart.svg";
 import HomeOverview from "./HomeOverview";
-import Clients from "./Clients";
+import Clients from "../../components/Patients/Clients";
 
 class HomePage extends Component {
+  constructor(props) {
+    super(props);
+  }
+
   render() {
-    const { hospital, location} = this.props;
+    const { hospital, location, admin, client} = this.props;
+    console.log(this.props)
     
     const {pathname} = location
     return (
@@ -22,6 +27,7 @@ class HomePage extends Component {
               {hospital?.body?.name}
             </Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
+
             <Nav.Link className="btn btn-lime" href="/client/login">
               Login
             </Nav.Link>

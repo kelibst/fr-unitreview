@@ -16,7 +16,7 @@ class App extends Component {
     fetchHospital();
   }
   render() {
-    const { hospitalData } = this.props.hospital;
+    const { hospitalData, currentUser, patient } = this.props.hospital;
     return (
       <Router>
         <div className="wrapper d-block">
@@ -29,7 +29,7 @@ class App extends Component {
             <Route
             path="/"
               render={(props) => (
-                <HomePage {...props} hospital={hospitalData} />
+                <HomePage {...props} hospital={hospitalData} admin={currentUser} client={patient} />
               )}
             />
           </Switch>
