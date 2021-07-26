@@ -11,7 +11,7 @@ import Success from "../Success";
 import ErrOrs from "../ErrOrs";
 import successWithMessage from "../../store/actions/successAction";
 import Patients from "../Patients/Patients";
-import Reviews from "../../containers/Reviews";
+import Reviews from "./Reviews";
 
 class Dashboard extends Component {
   constructor(props) {
