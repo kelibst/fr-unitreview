@@ -1,6 +1,8 @@
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project is a complete front-end react app that uses my backend hospital unit review Rails App to create an environment to allow clients review hospitals that 
+they have visited. Don't forget to leave a star if you like this project.
 
 ## Available Scripts
 
