@@ -23,7 +23,7 @@ class HomePage extends Component {
             className="d-flex justify-content-between"
             expand="lg"
           >
-            <Navbar.Brand href="#home" className="home-brand">
+            <Navbar.Brand href="/" className="home-brand">
               {hospital?.body?.name}
             </Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />

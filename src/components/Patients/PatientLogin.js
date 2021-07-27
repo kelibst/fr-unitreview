@@ -13,6 +13,7 @@ class PatientLogin extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      isSubmit: false,
       data: {
         email: "",
       },
@@ -22,7 +23,7 @@ class PatientLogin extends Component {
   componentDidMount() {
     let jwtToken = localStorage.getItem("patJwt");
     jwtToken = JSON.parse(jwtToken);
-    const { fetchPatient } = this.props;
+    const { fetchPatient, error } = this.props;
     jwtToken?.token?.length && fetchPatient(jwtToken);
     const { patient, history } = this.props;
     patient?.created_at?.length && history.push(`/client/dashboard`)
@@ -53,6 +54,10 @@ class PatientLogin extends Component {
     };
     const handleSubmit = (e) => {
       e.preventDefault();
+      this.setState({
+        ...this.state,
+        isSubmit: true
+      })
       const { data } = this.state;
       loginPatientIn(data);
     };
