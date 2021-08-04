@@ -146,4 +146,41 @@ const fetchPatient = (jwtToken) => (dispatch) => {
     );
 };
 
-export { createPatient, fetchPatients, loginPatientIn, fetchPatient };
+const addPatientToSlot = (ids, jwtToken) => (dispatch) => {
+  const {unit_id, reviewer_id } = ids
+
+  const { token } = jwtToken;
+  const AddSlotData = {
+    unit_id,
+    reviewer_id
+  };
+  debugger
+  const addSlotAxios = Axios.create({
+    baseURL: "https://unitreview.herokuapp.com/api/v1/",
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+  addSlotAxios
+    .post('/addslot', AddSlotData)
+    .then((res) => {
+      const { slot } = res.data
+      const succPayload = {
+        message: slot,
+        type: "slot_added",
+      };
+
+      dispatch({
+        type: "SUCC_MSG",
+        payload: succPayload,
+      });
+    })
+    .catch((err) =>
+      dispatch({
+        type: "CREATE_ERROR",
+        payload: err,
+      })
+    );
+}
+
+export { createPatient, fetchPatients, loginPatientIn, fetchPatient, addPatientToSlot };

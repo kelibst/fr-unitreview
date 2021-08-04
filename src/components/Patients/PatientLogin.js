@@ -33,7 +33,6 @@ class PatientLogin extends Component {
     const { patient, history, fetchPatient, error } = this.props;
     let jwtToken = localStorage.getItem("patJwt");
     jwtToken = JSON.parse(jwtToken);
-    console.log(error?.response)
 
     jwtToken?.token?.length && !error?.response && fetchPatient(jwtToken);
     patient?.created_at?.length && history.push(`/client/dashboard`)

@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import Patient from "../../containers/Patient/Patient";
-import { fetchPatients } from "../../store/actions/PatientAction";
+import { addPatientToSlot, fetchPatients } from "../../store/actions/PatientAction";
+import { fetchUnits } from "../../store/actions/unitAction";
 
 class Patients extends Component {
   constructor(props) {
@@ -9,14 +10,17 @@ class Patients extends Component {
   }
 
   componentDidMount() {
-    const { fetchPatients } = this.props;
+    const { fetchPatients, fetchUnits } = this.props;
     let jwtToken = localStorage.getItem("jwt");
     jwtToken = JSON.parse(jwtToken);
     jwtToken?.exp && fetchPatients(jwtToken);
+    jwtToken?.exp && fetchUnits();
   }
   render() {
-    const { patients } = this.props;
+    const { patients, units, addPatientToSlot} = this.props;
     const  isNotEmpty = (obj) => Object.keys(obj).length !== 0;
+    let jwtToken = localStorage.getItem("jwt");
+    jwtToken = JSON.parse(jwtToken);
     return (
       <div className="patients">
         <h1 className="h6 ps-3 fw-bold">List of patients</h1>
@@ -27,7 +31,7 @@ class Patients extends Component {
             <p className="pa-tr">Phone</p>
         </div>
         <div className="units-content pt-3">
-          {isNotEmpty(patients) && patients.map((patient) => <Patient patient={patient} />)}
+          {isNotEmpty(patients) && patients.map((patient) => <Patient patient={patient} key={patient.id} addPatientToSlot={addPatientToSlot} allUnits = {units} jwtToken= {jwtToken}/>)}
         </div>
       </div>
     );
@@ -41,4 +45,4 @@ const mapStateToProps = (state) => ({
   units: state.unitsData.units,
   patients: state.patientsData.patients,
 });
-export default connect(mapStateToProps, { fetchPatients })(Patients);
+export default connect(mapStateToProps, { fetchPatients, fetchUnits,addPatientToSlot })(Patients);

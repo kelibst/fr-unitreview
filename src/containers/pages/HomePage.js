@@ -12,7 +12,6 @@ class HomePage extends Component {
 
   render() {
     const { hospital, location, admin, client} = this.props;
-    console.log(this.props)
     
     const {pathname} = location
     return (
