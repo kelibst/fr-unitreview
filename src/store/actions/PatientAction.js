@@ -71,7 +71,6 @@ const loginPatientIn = (data) => (dispatch) => {
     "https://unitreview.herokuapp.com/api/v1/auth/reviewer/login.json";
   Axios.post(url, data)
     .then((res) => {
-      debugger;
       const jwtToken = JSON.stringify(res.data);
       localStorage.setItem("patJwt", jwtToken);
       const { username, token } = res.data;
@@ -83,7 +82,6 @@ const loginPatientIn = (data) => (dispatch) => {
       });
       userAxios.get(`/reviewers/${username}.json`)
       .then((res) => {
-        debugger
         const succPayload = {
           message: "Welcome Back!",
           type: "login_success",
