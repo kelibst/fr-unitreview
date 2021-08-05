@@ -154,7 +154,6 @@ const addPatientToSlot = (ids, jwtToken) => (dispatch) => {
     unit_id,
     reviewer_id
   };
-  debugger
   const addSlotAxios = Axios.create({
     baseURL: "https://unitreview.herokuapp.com/api/v1/",
     headers: {
