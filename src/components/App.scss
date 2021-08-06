@@ -1,6 +1,9 @@
 @import "~bootstrap/scss/bootstrap";
 @import url('https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
-
+:root {
+  --grayishBlue: hsl(229, 6%, 66%);
+  --varyDarkBlue: hsl(234, 12%, 34%);
+}
 .nav-cust {
   position: relative;
   left: 40px;
@@ -17,4 +20,15 @@
   position: absolute;
   min-width: 100%;
   z-index: 10;
+}
+
+.red-border {
+  border-top: 3px solid var(--varyDarkBlue);
+}
+
+.box {
+  border-radius: 5px;
+  box-shadow: 0px 30px 40px -20px var(--grayishBlue);
+  padding: 30px;
+  margin: 20px;  
 }

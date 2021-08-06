@@ -14,7 +14,6 @@ class HomePage extends Component {
   render() {
     const { hospital, location, admin, client, success} = this.props;
     const {pathname} = location
-    console.log(client)
     return (
       <div className="content">
         {success?.message && <Success />}

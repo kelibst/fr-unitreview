@@ -1,37 +1,41 @@
-import React, { Component } from 'react'
-import { connect } from 'react-redux'
-import { fetchPatient } from '../../store/actions/PatientAction';
-import { fetchUnits } from '../../store/actions/unitAction';
-import Success from '../Success';
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import { fetchPatient } from "../../store/actions/PatientAction";
+import { fetchUnits } from "../../store/actions/unitAction";
+import ClientUnit from "./ClientUnit";
 
 class Clients extends Component {
+  constructor(props) {
+    super(props);
+  }
+  componentDidMount() {
+    const { fetchPatient, fetchUnits, patient, units } = this.props;
+    let jwtToken = localStorage.getItem("patJwt");
+    jwtToken = JSON.parse(jwtToken);
+    jwtToken?.exp && fetchPatient(jwtToken);
+    jwtToken?.exp && fetchUnits();
+    console.log(this.props);
+  }
 
-    constructor(props) {
-        super(props);
-    }
-    componentDidMount() {
-        const { fetchPatient, fetchUnits, patient, units } = this.props;
-        let jwtToken = localStorage.getItem("patJwt");
-        jwtToken = JSON.parse(jwtToken);
-        jwtToken?.exp && fetchPatient(jwtToken);
-        jwtToken?.exp && fetchUnits();
-        console.log(patient, units)
-    }
-    
-    render() {
-        const { success } = this.props
-        return (
-            <div className="pat-dash">
-                
-                
-            </div>
-        )
-    }
+  render() {
+    const { success, units, patient } = this.props;
+    const isNotEmpty = (obj) => Object.keys(obj).length !== 0;
+
+    return (
+      <div className="pat-dash container-lg">
+        { isNotEmpty(units) && (
+          <div className="d-flex">
+            {isNotEmpty(units) && units?.map((unit) => <ClientUnit unit={unit} />)}{" "}
+          </div>
+        )}
+      </div>
+    );
+  }
 }
 const mapStateToProps = (state) => ({
-    success: state.success,
-    error: state.errors.err,
-    units: state.unitsData.units,
-    patient: state.patientsData.patient,
-  })
-export default connect(mapStateToProps, {fetchPatient, fetchUnits })(Clients)
+  success: state.success,
+  error: state.errors.err,
+  units: state.unitsData.units,
+  patient: state.patientsData.patient,
+});
+export default connect(mapStateToProps, { fetchPatient, fetchUnits })(Clients);
