@@ -4,6 +4,7 @@ import { Component } from "react";
 import heart from "../../assets/imges/heart.svg";
 import HomeOverview from "./HomeOverview";
 import Clients from "../../components/Patients/Clients";
+import Success from "../../components/Success";
 
 class HomePage extends Component {
   constructor(props) {
@@ -11,11 +12,12 @@ class HomePage extends Component {
   }
 
   render() {
-    const { hospital, location, admin, client} = this.props;
-    
+    const { hospital, location, admin, client, success} = this.props;
+    console.log(success)
     const {pathname} = location
     return (
       <div className="content">
+        {success?.message && <Success />}
         <header className="home-header">
           <Navbar
             bg="white"
@@ -31,6 +33,7 @@ class HomePage extends Component {
               Login
             </Nav.Link>
           </Navbar>
+          {success?.message?.length && <Success />}
           <div className="hero-container d-flex">
             <div className="hero-title-container mx-auto my-auto col-md-6">
               <h1 className="hero-title fw-bold mx-3 my-4">
