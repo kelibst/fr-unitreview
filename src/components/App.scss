@@ -3,6 +3,7 @@
 :root {
   --grayishBlue: hsl(229, 6%, 66%);
   --varyDarkBlue: hsl(234, 12%, 34%);
+  --cyan: hsl(180, 62%, 55%);
 }
 .nav-cust {
   position: relative;
@@ -22,8 +23,8 @@
   z-index: 10;
 }
 
-.red-border {
-  border-top: 3px solid var(--varyDarkBlue);
+.card-border {
+  border-top: 3px solid var(--cyan);
 }
 
 .box {

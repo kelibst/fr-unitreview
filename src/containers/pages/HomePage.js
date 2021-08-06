@@ -14,6 +14,7 @@ class HomePage extends Component {
   render() {
     const { hospital, location, admin, client, success} = this.props;
     const {pathname} = location
+    
     return (
       <div className="content">
         {success?.message && <Success />}
@@ -34,8 +35,8 @@ class HomePage extends Component {
             </Nav.Link>
           }
           </Navbar>
-          {success?.message?.length && <Success />}
-          <div className="hero-container d-flex">
+          {success?.message && <Success />}
+          <div className="hero-container container-lg d-flex">
             <div className="hero-title-container mx-auto my-auto col-md-6">
               <h1 className="hero-title fw-bold mx-3 my-4">
                 More than just a <span class="fw-bold text-lime">touch</span> of

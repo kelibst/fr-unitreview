@@ -24,7 +24,7 @@ class Clients extends Component {
     return (
       <div className="pat-dash container-lg">
         { isNotEmpty(units) && (
-          <div className="d-flex">
+          <div className="d-flex flex-wrap">
             {isNotEmpty(units) && units?.map((unit) => <ClientUnit unit={unit} />)}{" "}
           </div>
         )}
