@@ -12,8 +12,8 @@ import PatientLogin from "./Patients/PatientLogin";
 
 class App extends Component {
   componentDidMount() {
-    const { fetchHospital } = this.props;
-    fetchHospital();
+    const { fetchHospital, hospital} = this.props;
+    !hospital?.hospitalData?.id && fetchHospital();
   }
   render() {
     const { hospitalData, currentUser } = this.props.hospital;
@@ -25,7 +25,7 @@ class App extends Component {
             <Route exact path="/login" component ={Login} />
             <Route exact path="/client/login" component ={PatientLogin} />
             <Route exact path="/create-account" component={SignUp} />
-            <Route exact path="/about" component={About} />
+            {/* <Route exact path="/about" component={About} /> */}
             <Route path="/dashboard/admin" component={Dashboard}/>
             <Route
             path="/"

@@ -5,6 +5,7 @@ import heart from "../../assets/imges/heart.svg";
 import HomeOverview from "./HomeOverview";
 import Clients from "../../components/Patients/Clients";
 import Success from "../../components/Success";
+import Home from "./Home";
 
 class HomePage extends Component {
   constructor(props) {
@@ -56,7 +57,8 @@ class HomePage extends Component {
           </div>
         </header>
 
-       { pathname === "/" && <HomeOverview />}
+       { pathname === "/" && <Home /> }
+       {pathname === "/about" && <HomeOverview />}
        { pathname === "/client/dashboard" && <Clients />}
         <footer className="home-footer text-center my-2">
           <div className="copyright fw-bold">

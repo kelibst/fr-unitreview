@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import ClientUnit from "../../components/Patients/ClientUnit";
 import { fetchPatient } from "../../store/actions/PatientAction";
 import { fetchUnits } from "../../store/actions/unitAction";
-import ClientUnit from "./ClientUnit";
 
-class Clients extends Component {
+class Home extends Component {
   constructor(props) {
     super(props);
   }
@@ -12,8 +12,9 @@ class Clients extends Component {
     const { fetchPatient, fetchUnits, patient, units } = this.props;
     let jwtToken = localStorage.getItem("patJwt");
     jwtToken = JSON.parse(jwtToken);
-    jwtToken?.exp && !patient.id && fetchPatient(jwtToken);
-    jwtToken?.exp && !units && fetchUnits();
+    jwtToken?.exp && fetchPatient(jwtToken);
+    jwtToken?.exp && fetchUnits();
+    console.log(this.props);
   }
 
   render() {
@@ -37,4 +38,4 @@ const mapStateToProps = (state) => ({
   units: state.unitsData.units,
   patient: state.patientsData.patient,
 });
-export default connect(mapStateToProps, { fetchPatient, fetchUnits })(Clients);
+export default connect(mapStateToProps, { fetchPatient, fetchUnits })(Home);
