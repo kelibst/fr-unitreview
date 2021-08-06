@@ -13,8 +13,8 @@ class HomePage extends Component {
 
   render() {
     const { hospital, location, admin, client, success} = this.props;
-    console.log(success)
     const {pathname} = location
+    console.log(client)
     return (
       <div className="content">
         {success?.message && <Success />}
@@ -28,10 +28,12 @@ class HomePage extends Component {
               {hospital?.body?.name}
             </Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
-
-            <Nav.Link className="btn btn-lime" href="/client/login">
+            {client?.body ? 
+              client?.body?.name :
+              <Nav.Link className="btn btn-lime" href="/client/login">
               Login
             </Nav.Link>
+          }
           </Navbar>
           {success?.message?.length && <Success />}
           <div className="hero-container d-flex">

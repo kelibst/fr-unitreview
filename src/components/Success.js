@@ -20,7 +20,7 @@ class Success extends Component {
         show &&
           this.setState(
             {
-              show: true,
+              show: false,
             },
             successWithMessage("")
           );

@@ -16,8 +16,8 @@ class App extends Component {
     fetchHospital();
   }
   render() {
-    const { hospitalData, currentUser, patient } = this.props.hospital;
-    const { success } = this.props
+    const { hospitalData, currentUser } = this.props.hospital;
+    const { success, patient } = this.props
     return (
       <Router>
         <div className="wrapper d-block">
