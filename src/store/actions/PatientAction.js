@@ -86,7 +86,7 @@ const loginPatientIn = (data) => (dispatch) => {
           message: "Welcome Back!",
           type: "login_success",
         };
-
+        debugger
         dispatch({
           type: "SUCC_MSG",
           payload: succPayload,
@@ -115,7 +115,7 @@ const loginPatientIn = (data) => (dispatch) => {
 const fetchPatient = (jwtToken) => (dispatch) => {
   const { token, username } = jwtToken;
   const userAxios = Axios.create({
-    baseURL: "https://unitreview.herokuapp.com/api/v1/",
+    baseURL: "https://unitreview.herokuapp.com/",
     headers: {
       Authorization: `Bearer ${token}`,
     },
