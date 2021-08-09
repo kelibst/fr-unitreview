@@ -18,7 +18,7 @@ class HomePage extends Component {
     
     return (
       <div className="content">
-        {success?.message && <Success />}
+        {success?.message.length && <Success />}
         <header className="home-header">
           <Navbar
             bg="white"
@@ -36,7 +36,6 @@ class HomePage extends Component {
             </Nav.Link>
           }
           </Navbar>
-          {success?.message && <Success />}
           <div className="hero-container container-lg d-flex">
             <div className="hero-title-container mx-auto my-auto col-md-6">
               <h1 className="hero-title fw-bold mx-3 my-4">

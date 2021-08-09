@@ -24,8 +24,11 @@ class Home extends Component {
     return (
       <div className="pat-dash container-lg">
         { isNotEmpty(units) && (
-          <div className="d-flex flex-wrap">
+          <div className="unit-container">
+            <h1 className="units-home- fw-bold text-center my-4">This summarises what our clients have to say about our performance.</h1>
+          <div className="container-units">
             {isNotEmpty(units) && units?.map((unit) => <ClientUnit unit={unit} />)}{" "}
+          </div>
           </div>
         )}
       </div>

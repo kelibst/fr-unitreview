@@ -9,22 +9,22 @@ class Clients extends Component {
     super(props);
   }
   componentDidMount() {
+    const isNotEmpty = (obj) => Object.keys(obj).length !== 0;
     const { fetchPatient, fetchUnits, patient, units } = this.props;
     let jwtToken = localStorage.getItem("patJwt");
     jwtToken = JSON.parse(jwtToken);
     jwtToken?.exp && !patient.id && fetchPatient(jwtToken);
-    jwtToken?.exp && !units && fetchUnits();
+    jwtToken?.exp && !isNotEmpty(units) && fetchUnits();
   }
 
   render() {
     const { success, units, patient } = this.props;
     const isNotEmpty = (obj) => Object.keys(obj).length !== 0;
-
     return (
       <div className="pat-dash container-lg">
         { isNotEmpty(units) && (
-          <div className="d-flex flex-wrap">
-            {isNotEmpty(units) && units?.map((unit) => <ClientUnit unit={unit} />)}{" "}
+          <div className="container-units">
+            { units?.map((unit) => <ClientUnit unit={unit} />)}{" "}
           </div>
         )}
       </div>
