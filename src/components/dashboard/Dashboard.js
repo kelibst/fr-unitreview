@@ -49,7 +49,6 @@ class Dashboard extends Component {
       history.push("/login");
     };
     const { path } = this.props?.match
-    console.log(this.props)
     return (
       <div className="dashboard bg-light">
         <SideBar hospital={hospital} user={currentUser} />

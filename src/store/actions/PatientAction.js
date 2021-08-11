@@ -71,7 +71,6 @@ const loginPatientIn = (data) => (dispatch) => {
     "https://unitreview.herokuapp.com/api/v1/auth/reviewer/login.json";
   Axios.post(url, data)
     .then((res) => {
-      debugger;
       const jwtToken = JSON.stringify(res.data);
       localStorage.setItem("patJwt", jwtToken);
       const { username, token } = res.data;
@@ -83,12 +82,11 @@ const loginPatientIn = (data) => (dispatch) => {
       });
       userAxios.get(`/reviewers/${username}.json`)
       .then((res) => {
-        debugger
         const succPayload = {
           message: "Welcome Back!",
           type: "login_success",
         };
-
+        debugger
         dispatch({
           type: "SUCC_MSG",
           payload: succPayload,
@@ -117,7 +115,7 @@ const loginPatientIn = (data) => (dispatch) => {
 const fetchPatient = (jwtToken) => (dispatch) => {
   const { token, username } = jwtToken;
   const userAxios = Axios.create({
-    baseURL: "https://unitreview.herokuapp.com/api/v1/",
+    baseURL: "https://unitreview.herokuapp.com/",
     headers: {
       Authorization: `Bearer ${token}`,
     },
@@ -148,4 +146,40 @@ const fetchPatient = (jwtToken) => (dispatch) => {
     );
 };
 
-export { createPatient, fetchPatients, loginPatientIn, fetchPatient };
+const addPatientToSlot = (ids, jwtToken) => (dispatch) => {
+  const {unit_id, reviewer_id } = ids
+
+  const { token } = jwtToken;
+  const AddSlotData = {
+    unit_id,
+    reviewer_id
+  };
+  const addSlotAxios = Axios.create({
+    baseURL: "https://unitreview.herokuapp.com/api/v1/",
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+  addSlotAxios
+    .post('/addslot', AddSlotData)
+    .then((res) => {
+      const { slot } = res.data
+      const succPayload = {
+        message: slot,
+        type: "slot_added",
+      };
+
+      dispatch({
+        type: "SUCC_MSG",
+        payload: succPayload,
+      });
+    })
+    .catch((err) =>
+      dispatch({
+        type: "CREATE_ERROR",
+        payload: err,
+      })
+    );
+}
+
+export { createPatient, fetchPatients, loginPatientIn, fetchPatient, addPatientToSlot };

@@ -41,9 +41,9 @@ class ErrOrs extends Component {
           {/* { errors?.response && (<h6 className="my-1"> Sorry something went wrong</h6>)} */}
           
             { typeof(errors) == "object" && <h6>{errors?.Email}</h6>}
-            {Array.isArray(errors) && errors.map(err => <h6>{err}</h6>) }
+            {Array.isArray(errors) && errors.map(err => <h6 key={err}>{err}</h6>) }
             {typeof(error) === "string" && <h6 className="my-2">Sorry your session has expired! <br></br> Kindly login again.</h6>}
-            {error && typeof(error) !== "string" && Object.entries(errors?.response?.data?.error).map(error => <h6 className="my-2">{error}</h6>)}
+            {error && typeof(error) !== "string" && Object.entries(errors?.response?.data?.error).map(error => <h6 key={error} className="my-2">{error}</h6>)}
             {errors?.request && !errors?.response?.data && <h6 className="my-5"><Icofont icon="close" /> {errors.request.response}</h6>}
             
           </div>
@@ -64,7 +64,6 @@ ErrOrs.defaultProps = {
 };
 ErrOrs.propTypes = {
   errors: PropTypes.shape,
-
   unloadError: PropTypes.func.isRequired,
 };
 

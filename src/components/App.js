@@ -12,11 +12,12 @@ import PatientLogin from "./Patients/PatientLogin";
 
 class App extends Component {
   componentDidMount() {
-    const { fetchHospital } = this.props;
-    fetchHospital();
+    const { fetchHospital, hospital} = this.props;
+    !hospital?.hospitalData?.id && fetchHospital();
   }
   render() {
-    const { hospitalData, currentUser, patient } = this.props.hospital;
+    const { hospitalData, currentUser } = this.props.hospital;
+    const { success, patient } = this.props
     return (
       <Router>
         <div className="wrapper d-block">
@@ -24,12 +25,12 @@ class App extends Component {
             <Route exact path="/login" component ={Login} />
             <Route exact path="/client/login" component ={PatientLogin} />
             <Route exact path="/create-account" component={SignUp} />
-            <Route exact path="/about" component={About} />
+            {/* <Route exact path="/about" component={About} /> */}
             <Route path="/dashboard/admin" component={Dashboard}/>
             <Route
             path="/"
               render={(props) => (
-                <HomePage {...props} hospital={hospitalData} admin={currentUser} client={patient} />
+                <HomePage {...props} hospital={hospitalData} success={success} admin={currentUser} client={patient} />
               )}
             />
           </Switch>
@@ -42,6 +43,7 @@ const mapStateToProps = (state) => ({
   hospital: state.hospital,
   currentUser: state.userData.currentUser,
   patient: state.patientsData.patient,
+  success: state.success,
 });
 
 export default connect(mapStateToProps, { fetchHospital })(App);

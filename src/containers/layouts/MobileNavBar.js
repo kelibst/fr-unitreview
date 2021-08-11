@@ -17,16 +17,6 @@ const MobileNavBar = () => {
           </NavLink>
         </li>
       </ul>
-      {/* <AddHospital
-        status="Add"
-        hospital={{
-          name: "",
-          country: "",
-          address: "",
-          city: "",
-          image: "",
-        }}
-      /> */}
     </nav>
   );
 };

@@ -13,6 +13,7 @@ class PatientLogin extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      isSubmit: false,
       data: {
         email: "",
       },
@@ -22,18 +23,19 @@ class PatientLogin extends Component {
   componentDidMount() {
     let jwtToken = localStorage.getItem("patJwt");
     jwtToken = JSON.parse(jwtToken);
-    const { fetchPatient } = this.props;
+    const { fetchPatient, error } = this.props;
     jwtToken?.token?.length && fetchPatient(jwtToken);
     const { patient, history } = this.props;
-    patient?.created_at?.length && history.push(`/client/dashboard`)
+    patient?.dates?.created_at?.length && history.push(`/client/dashboard`)
   }
 
   componentDidUpdate() {
-    const { patient, history, fetchPatient } = this.props;
+    const { patient, history, fetchPatient, error } = this.props;
     let jwtToken = localStorage.getItem("patJwt");
     jwtToken = JSON.parse(jwtToken);
-    jwtToken?.token?.length && fetchPatient(jwtToken);
-    patient?.created_at?.length && history.push(`/client/dashboard`)
+
+    // jwtToken?.token?.length && !error?.response && !patient?.created_at?.length && fetchPatient(jwtToken);
+    patient?.dates?.created_at?.length && history.push(`/client/dashboard`)
   }
 
   render() {
@@ -53,6 +55,10 @@ class PatientLogin extends Component {
     };
     const handleSubmit = (e) => {
       e.preventDefault();
+      this.setState({
+        ...this.state,
+        isSubmit: true
+      })
       const { data } = this.state;
       loginPatientIn(data);
     };

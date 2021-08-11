@@ -1,30 +1,34 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import ClientUnit from "../../components/Patients/ClientUnit";
 import { fetchPatient } from "../../store/actions/PatientAction";
 import { fetchUnits } from "../../store/actions/unitAction";
-import ClientUnit from "./ClientUnit";
 
-class Clients extends Component {
+class Home extends Component {
   constructor(props) {
     super(props);
   }
   componentDidMount() {
-    const isNotEmpty = (obj) => Object.keys(obj).length !== 0;
     const { fetchPatient, fetchUnits, patient, units } = this.props;
     let jwtToken = localStorage.getItem("patJwt");
     jwtToken = JSON.parse(jwtToken);
-    jwtToken?.exp && !patient.id && fetchPatient(jwtToken);
-    jwtToken?.exp && !isNotEmpty(units) && fetchUnits();
+    jwtToken?.exp && fetchPatient(jwtToken);
+    jwtToken?.exp && fetchUnits();
+    console.log(this.props);
   }
 
   render() {
     const { success, units, patient } = this.props;
     const isNotEmpty = (obj) => Object.keys(obj).length !== 0;
+
     return (
       <div className="pat-dash container-lg">
         { isNotEmpty(units) && (
+          <div className="unit-container">
+            <h1 className="units-home- fw-bold text-center my-4">This summarises what our clients have to say about our performance.</h1>
           <div className="container-units">
-            { units?.map((unit) => <ClientUnit unit={unit} />)}{" "}
+            {isNotEmpty(units) && units?.map((unit) => <ClientUnit unit={unit} />)}{" "}
+          </div>
           </div>
         )}
       </div>
@@ -37,4 +41,4 @@ const mapStateToProps = (state) => ({
   units: state.unitsData.units,
   patient: state.patientsData.patient,
 });
-export default connect(mapStateToProps, { fetchPatient, fetchUnits })(Clients);
+export default connect(mapStateToProps, { fetchPatient, fetchUnits })(Home);

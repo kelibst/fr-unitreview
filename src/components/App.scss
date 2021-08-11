@@ -1,7 +1,9 @@
 @import "~bootstrap/scss/bootstrap";
 @import url('https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
-.wrapper {
-  position: relative;
+:root {
+  --grayishBlue: hsl(229, 6%, 66%);
+  --varyDarkBlue: hsl(234, 12%, 34%);
+  --cyan: hsl(180, 62%, 55%);
 }
 .nav-cust {
   position: relative;
@@ -12,3 +14,29 @@
   -webkit-box-shadow: 0px 10px 13px -7px #847e7e, 5px 5px 15px 5px rgba(0,0,0,0); 
   box-shadow: 0px 10px 13px -7px #847e7e, 5px 5px 15px 5px rgba(0,0,0,0);
 }
+.body {
+  position: relative;
+}
+.al-pre-cont {
+  position: absolute;
+  min-width: 100%;
+  z-index: 10;
+}
+
+.card-border {
+  border-top: 3px solid var(--cyan);
+}
+
+.box {
+  border-radius: 5px;
+  box-shadow: 0px 30px 40px -20px var(--grayishBlue);
+  padding: 30px;
+  margin: 20px;  
+  max-width: 350px;
+}
+.container-units {
+  display: grid;
+  align-items: center;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+}
+

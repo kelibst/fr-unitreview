@@ -4,6 +4,8 @@ import { Component } from "react";
 import heart from "../../assets/imges/heart.svg";
 import HomeOverview from "./HomeOverview";
 import Clients from "../../components/Patients/Clients";
+import Success from "../../components/Success";
+import Home from "./Home";
 
 class HomePage extends Component {
   constructor(props) {
@@ -11,28 +13,30 @@ class HomePage extends Component {
   }
 
   render() {
-    const { hospital, location, admin, client} = this.props;
-    console.log(this.props)
-    
+    const { hospital, location, admin, client, success} = this.props;
     const {pathname} = location
+    
     return (
       <div className="content">
+        {success?.message.length && <Success />}
         <header className="home-header">
           <Navbar
             bg="white"
             className="d-flex justify-content-between"
             expand="lg"
           >
-            <Navbar.Brand href="#home" className="home-brand">
+            <Navbar.Brand href="/" className="home-brand">
               {hospital?.body?.name}
             </Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
-
-            <Nav.Link className="btn btn-lime" href="/client/login">
+            {client?.body ? 
+              client?.body?.name :
+              <Nav.Link className="btn btn-lime" href="/client/login">
               Login
             </Nav.Link>
+          }
           </Navbar>
-          <div className="hero-container d-flex">
+          <div className="hero-container container-lg d-flex">
             <div className="hero-title-container mx-auto my-auto col-md-6">
               <h1 className="hero-title fw-bold mx-3 my-4">
                 More than just a <span class="fw-bold text-lime">touch</span> of
@@ -52,7 +56,8 @@ class HomePage extends Component {
           </div>
         </header>
 
-       { pathname === "/" && <HomeOverview />}
+       { pathname === "/" && <Home /> }
+       {pathname === "/about" && <HomeOverview />}
        { pathname === "/client/dashboard" && <Clients />}
         <footer className="home-footer text-center my-2">
           <div className="copyright fw-bold">

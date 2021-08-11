@@ -41,8 +41,8 @@ class Success extends Component {
     };
 
     return (
-      <div className="alert-success col-sm-10 col-md-6 col-ld-4 mx-auto">
-        <Alert show={show} variant="success">
+      <div className="al-pre-cont">
+        <Alert show={show} variant="success" className="al-cont col-sm-10 col-md-6 mx-auto col-lg-4">
           <Alert.Heading>
             {" "}
             <Icofont icon="tick-mark" /> {success?.message}
