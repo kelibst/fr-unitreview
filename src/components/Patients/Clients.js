@@ -20,11 +20,12 @@ class Clients extends Component {
   render() {
     const { success, units, patient } = this.props;
     const isNotEmpty = (obj) => Object.keys(obj).length !== 0;
+    const { reviewer_slots } = patient
     return (
       <div className="pat-dash container-lg">
         { isNotEmpty(units) && (
           <div className="container-units">
-            { units?.map((unit) => <ClientUnit unit={unit} />)}{" "}
+            { reviewer_slots?.map((unit) => <ClientUnit key={unit.id} unit={unit} />)}{" "}
           </div>
         )}
       </div>
