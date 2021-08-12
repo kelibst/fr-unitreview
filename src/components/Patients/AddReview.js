@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Button, ButtonGroup, Form, Modal } from "react-bootstrap";
 import Icofont from "react-icofont";
+import StarRatings from "react-star-ratings";
 import { connect } from "react-redux";
 import { createReview } from "../../store/actions/reviewsAction";
 import ErrOrs from "../ErrOrs";
@@ -21,7 +22,7 @@ class AddReview extends Component {
         show: true,
         formData: {
           title: "",
-          score: "",
+          score: 0,
           description: "",
           hospital_id: 1,
         },
@@ -44,7 +45,15 @@ class AddReview extends Component {
       });
     };
 
-    // cons changeRating
+    const changeRating = (rating) => {
+      this.setState({
+        ...this.state,
+        formData: {
+          ...this.state.formData,
+          score: rating,
+        },
+      });
+    };
     const handleSubmit = (e) => {
       e.preventDefault();
       let jwtToken = localStorage.getItem("patJwt");
@@ -59,10 +68,7 @@ class AddReview extends Component {
 
     return (
       <div className="side-btn">
-        <Button
-          variant="primary"
-          onClick={handleShow}
-        >
+        <Button variant="primary" onClick={handleShow}>
           Leave a review
           <Icofont icon="ui-add" className="unit-add" />
         </Button>
@@ -77,21 +83,25 @@ class AddReview extends Component {
                 {error.response && <ErrOrs />}
                 <Form.Group controlId="title" className="pb-3">
                   <Form.Label>Title</Form.Label>
-                  <Form.Control
-                    required
-                    type="text"
-                    onChange={handleChange}
-                  />
+                  <Form.Control required type="text" onChange={handleChange} />
                 </Form.Group>
 
                 <Form.Group controlId="description" className="pb-3">
                   <Form.Label>Describe how you were treated!</Form.Label>
-                  <Form.Control
-                    required
-                    type="text"
-                    onChange={handleChange}
-                  />
+                  <Form.Control required type="text" onChange={handleChange} />
                 </Form.Group>
+
+                <div className="mt-1 mb-3">
+                  <p className="text-secondary">Select your rating.</p>
+                  <StarRatings
+                    rating={this.state.formData?.score}
+                    widgetRatedColors="blue"
+                    changeRating={changeRating}
+                    numberOfStars={5}
+                    starDimension="30px"
+                    starSpacing="5px"
+                  />
+                </div>
                 <Button className="btn unit-form-btn w-100" type="submit">
                   Submit
                 </Button>

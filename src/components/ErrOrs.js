@@ -13,6 +13,22 @@ class ErrOrs extends Component {
     };
   }
 
+  // componentDidMount() {
+  //   const { show } = this.state;
+  //   show &&
+  //     setTimeout(() => {
+  //       const { unloadError } = this.props;
+  //       show &&
+  //         this.setState(
+  //           {
+  //             show: false,
+  //           },
+  //           unloadError()
+  //         );
+  //     }, 3000);
+  // }
+
+
   componentWillUnmount() {
     const { unloadError } = this.props;
     unloadError();

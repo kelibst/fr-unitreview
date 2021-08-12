@@ -42,7 +42,7 @@ const fetchReviews = (jwtToken) => (dispatch) => {
         Authorization: `Bearer ${token}`,
       },
     });
-
+    debugger
     postReviewAxios
       .post("/reviews", data)
       .then(() => {
@@ -58,6 +58,7 @@ const fetchReviews = (jwtToken) => (dispatch) => {
         });
       })
       .catch(err => {
+        debugger
         dispatch({
           type: "CREATE_ERROR",
           payload: {
