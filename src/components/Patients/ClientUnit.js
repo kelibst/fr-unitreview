@@ -2,7 +2,7 @@ import React from "react";
 import StarRatings from "react-star-ratings";
 import AddReview from "./AddReview";
 
-const ClientUnit = ({ unit }) => {
+const ClientUnit = ({ unit, SlotUnit }) => {
   return (
     <div className="unit-cont box card-border">
       <div className="unit-header">
@@ -18,16 +18,19 @@ const ClientUnit = ({ unit }) => {
           </div>
           <div className="star-rating-cont my-3">
           <StarRatings
-            rating={4}
+            rating={unit?.body?.score ? unit?.body?.score : unit?.score }
             starRatedColor="blue"
             name="rating"
             numberOfStars={5}
             starDimension="20px"
             starSpacing="5px"
           /></div>
-          <div className="actions mt-4">
+          {
+            SlotUnit  && <div className="actions mt-4">
             <AddReview unitId={unit?.id} />
             </div>
+          }
+          
         </div>
       </div>
     </div>
