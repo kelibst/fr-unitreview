@@ -26,7 +26,7 @@ class Clients extends Component {
       <div className="pat-dash container-lg">
         { isNotEmpty(patUnits) && (
           <div className="container-units">
-            { reviewer_units_to_review?.map((unit) => <ClientUnit key={unit.id} unit={unit} SlotUnit={true} />)}{" "}
+            { patUnits?.map((unit) => <ClientUnit key={unit.id} unit={unit} SlotUnit={true} />)}{" "}
           </div>
         )}
       </div>

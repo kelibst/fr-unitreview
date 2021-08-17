@@ -3,22 +3,23 @@ import StarRatings from "react-star-ratings";
 import AddReview from "./AddReview";
 
 const ClientUnit = ({ unit, SlotUnit }) => {
+  console.log(unit, SlotUnit)
   return (
     <div className="unit-cont box card-border">
       <div className="unit-header">
         <div className="d-flex">
           <h5 className="unit-h1">Name: </h5>
-          <span className="det-style mx-2">{unit?.body?.name ? unit?.body?.name : unit?.name}</span>
+          <span className="det-style mx-2">{unit?.body?.name}</span>
         </div>
 
         <div className="unit-details">
           <div className="d-flex">
             <h5 className="unit-head-name  fw-bold">Unit Head:</h5>
-            <span className="det-style mx-2">{unit?.body?.unitHead ? unit?.body?.unitHead : unit?.unithead}</span>
+            <span className="det-style mx-2">{unit?.body?.unitHead}</span>
           </div>
           <div className="star-rating-cont my-3">
           <StarRatings
-            rating={unit?.body?.score ? unit?.body?.score : unit?.score }
+            rating={unit?.body?.score ? Number(unit?.body?.score)  : 0 }
             starRatedColor="blue"
             name="rating"
             numberOfStars={5}
