@@ -17,7 +17,7 @@ class App extends Component {
   }
   render() {
     const { hospitalData, currentUser } = this.props.hospital;
-    const { success, patient } = this.props
+    const { success, patient, error } = this.props
     return (
       <Router>
         <div className="wrapper d-block">
@@ -30,7 +30,7 @@ class App extends Component {
             <Route
             path="/"
               render={(props) => (
-                <HomePage {...props} hospital={hospitalData} success={success} admin={currentUser} client={patient} />
+                <HomePage {...props} hospital={hospitalData} success={success} err={error} admin={currentUser} client={patient} />
               )}
             />
           </Switch>
@@ -44,6 +44,7 @@ const mapStateToProps = (state) => ({
   currentUser: state.userData.currentUser,
   patient: state.patientsData.patient,
   success: state.success,
+  error: state.errors.err,
 });
 
 export default connect(mapStateToProps, { fetchHospital })(App);

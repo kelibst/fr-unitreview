@@ -6,6 +6,8 @@ import { connect } from "react-redux";
 import { createReview } from "../../store/actions/reviewsAction";
 import ErrOrs from "../ErrOrs";
 import Success from "../Success";
+import { getParseTreeNode } from "typescript";
+import { getPatSlotUnits } from "../../store/actions/PatientAction";
 
 class AddReview extends Component {
   constructor(props) {
@@ -14,6 +16,21 @@ class AddReview extends Component {
     this.state = {
       show: false,
     };
+  }
+
+  componentDidUpdate() {
+    const { success } = this.props;
+    const { show } = this.state;
+    if (success?.type === "review_create_success") {
+      let jwtToken = localStorage.getItem("patJwt");
+      jwtToken = JSON.parse(jwtToken);
+      jwtToken?.exp && show && getPatSlotUnits(jwtToken);
+      show &&
+        this.setState({
+          ...this.state,
+          show: false,
+        });
+    }
   }
 
   render() {
@@ -60,8 +77,7 @@ class AddReview extends Component {
       jwtToken = JSON.parse(jwtToken);
       const { formData, show } = this.state;
       const { createReview, success, unitId, patient } = this.props;
-      jwtToken && createReview(jwtToken, formData, unitId, patient.id);
-      success?.type === "review_create_success" && show && handleClose();
+      jwtToken?.exp && createReview(jwtToken, formData, unitId, patient.id);
     };
     const { show } = this.state;
     const { error, success } = this.props;
@@ -79,8 +95,8 @@ class AddReview extends Component {
           <Modal.Body>
             <div className="form-container">
               <Form onSubmit={handleSubmit}>
-                {success?.message?.message && <Success />}
-                {error.response && <ErrOrs />}
+                {/* {success?.message?.message && <Success />}
+                {error.response && <ErrOrs />} */}
                 <Form.Group controlId="title" className="pb-3">
                   <Form.Label>Title</Form.Label>
                   <Form.Control required type="text" onChange={handleChange} />
@@ -118,4 +134,4 @@ const mapStateToProps = (state) => ({
   success: state.success,
   error: state.errors.err,
 });
-export default connect(mapStateToProps, { createReview })(AddReview);
+export default connect(mapStateToProps, { createReview, getPatSlotUnits })(AddReview);

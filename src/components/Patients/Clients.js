@@ -19,8 +19,7 @@ class Clients extends Component {
   }
 
   render() {
-    const { success, units, patient, patUnits } = this.props;
-    const { reviewer_units_to_review } = patUnits
+    const { patUnits } = this.props;
     const isNotEmpty = (obj) => Object.keys(obj).length !== 0;
     return (
       <div className="pat-dash container-lg">

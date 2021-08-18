@@ -31,11 +31,12 @@ const fetchReviews = (jwtToken) => (dispatch) => {
 
   const createReview = (jwtToken, formData, unitId, patientId) => (dispatch) => {
     const { token }= jwtToken;
-    const data = {
+    const data = {"review": {
       ...formData,
       unit_id: unitId,
       patient_id: patientId
     }
+  }
     const postReviewAxios = Axios.create({
       baseURL: "https://unitreview.herokuapp.com",
       headers: {
@@ -44,12 +45,20 @@ const fetchReviews = (jwtToken) => (dispatch) => {
     });
     postReviewAxios
       .post("/reviews", data)
-      .then(() => {
+      .then((res) => {
         const succPayload = {
           message: "Review was successfully added!",
           type: "review_create_success",
         };
-  
+        res?.data?.error == "You do not have a slot to review this unit." ?
+        
+        dispatch({
+          type: "CREATE_ERROR",
+          payload: {
+            ...res,
+            response: res?.data
+          },
+        }) :
         dispatch({
           type: "SUCC_MSG",
           payload: succPayload,

@@ -6,6 +6,7 @@ import HomeOverview from "./HomeOverview";
 import Clients from "../../components/Patients/Clients";
 import Success from "../../components/Success";
 import Home from "./Home";
+import ErrOrs from "../../components/ErrOrs";
 
 class HomePage extends Component {
   constructor(props) {
@@ -13,7 +14,7 @@ class HomePage extends Component {
   }
 
   render() {
-    const { hospital, location, admin, client, success} = this.props;
+    const { hospital, location, err, client, success} = this.props;
     const {pathname} = location
     
     return (
@@ -55,7 +56,7 @@ class HomePage extends Component {
             </div>
           </div>
         </header>
-
+          {/* {err?.response && ErrOrs} */}
        { pathname === "/" && <Home /> }
        {pathname === "/about" && <HomeOverview />}
        { pathname === "/client/dashboard" && <Clients />}

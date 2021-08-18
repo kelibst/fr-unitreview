@@ -3,7 +3,6 @@ import StarRatings from "react-star-ratings";
 import AddReview from "./AddReview";
 
 const ClientUnit = ({ unit, SlotUnit }) => {
-  console.log(unit, SlotUnit)
   return (
     <div className="unit-cont box card-border">
       <div className="unit-header">

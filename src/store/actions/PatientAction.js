@@ -86,7 +86,6 @@ const loginPatientIn = (data) => (dispatch) => {
           message: "Welcome Back!",
           type: "login_success",
         };
-        debugger
         dispatch({
           type: "SUCC_MSG",
           payload: succPayload,
@@ -100,7 +99,10 @@ const loginPatientIn = (data) => (dispatch) => {
       .catch((err) =>
       dispatch({
         type: "CREATE_ERROR",
-        payload: err,
+        payload: {
+          ...err,
+          response: err?.response,
+        },
       })
     );
     })
@@ -158,7 +160,6 @@ const getPatSlotUnits = (jwtToken) => (dispatch) => {
   patSlotUnitsAxios
     .get(`/api/v1/units/reviewing/${username}.json`)
     .then((res) => {
-      debugger
       dispatch({
         type: "GET_PAT_SLOTS",
         payload: res.data,
@@ -167,7 +168,10 @@ const getPatSlotUnits = (jwtToken) => (dispatch) => {
     .catch((err) =>
       dispatch({
         type: "CREATE_ERROR",
-        payload: err,
+        payload: {
+          ...err,
+          response: err?.response,
+        },
       })
     );
 };
