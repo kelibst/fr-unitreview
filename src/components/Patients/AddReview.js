@@ -41,7 +41,6 @@ class AddReview extends Component {
           title: "",
           score: 0,
           description: "",
-          hospital_id: 1,
         },
       });
     };
