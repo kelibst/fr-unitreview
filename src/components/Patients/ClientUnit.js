@@ -25,12 +25,13 @@ const ClientUnit = ({ unit, SlotUnit }) => {
             starDimension="20px"
             starSpacing="5px"
           /></div>
+          <div classNanem="d-flex justify-content-between">
           {
-            SlotUnit  && <div className="actions mt-4">
+            SlotUnit  &&
             <AddReview unitId={unit?.id} />
-            </div>
           }
-          
+          <a href={`unit/${unit?.body?.unit_username}`} className="btn btn-success">More</a>
+         </div> 
         </div>
       </div>
     </div>
