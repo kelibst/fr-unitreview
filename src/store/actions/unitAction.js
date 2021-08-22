@@ -90,4 +90,12 @@ const fetchUnit = (username) => (dispatch) => {
       });
     });
 };
-export { createUnit, fetchUnits, fetchUnit };
+
+
+const setCurrentUnit = (unit) => (dispatch) => {
+  dispatch({
+    type: "SET_CURRENT_UNIT",
+    payload:  unit,
+  });
+}
+export { createUnit, fetchUnits, fetchUnit, setCurrentUnit };

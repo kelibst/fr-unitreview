@@ -25,7 +25,7 @@ class Clients extends Component {
       <div className="pat-dash container-lg">
         { isNotEmpty(patUnits) && (
           <div className="container-units">
-            { patUnits?.map((unit) => <ClientUnit key={unit.id} unit={unit} SlotUnit={true} />)}{" "}
+            { patUnits?.map((unit) => <ClientUnit key={unit.id} unit={unit} SlotUnit={true} />)}
           </div>
         )}
       </div>

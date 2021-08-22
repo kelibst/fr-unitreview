@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
-import { useLocation, withRouter } from 'react-router-dom';
 import { fetchPatient } from '../../store/actions/PatientAction';
 
 class ClientView extends Component {
@@ -13,13 +12,12 @@ class ClientView extends Component {
         const { patient, fetchPatient } = this.props;
         let jwtToken = localStorage.getItem("patJwt");
         jwtToken = JSON.parse(jwtToken);
-        jwtToken?.exp && !patient.id && fetchPatient(jwtToken);
-        
+        jwtToken?.exp && !patient.id && fetchPatient(jwtToken); 
       }
       
     render() {
         const { body, id } = this.props.patient
-        console.log(this.props)
+        console.log(this.props.match)
         return (
             <div className="clientview">
                 <div className="clientview-content">
@@ -41,4 +39,4 @@ const mapStateToProps = (state) => ({
     error: state.errors.err,
     patient: state.patientsData.patient,
   });
-export default connect(mapStateToProps, {fetchPatient})(withRouter(ClientView))
+export default connect(mapStateToProps, {fetchPatient})(ClientView)

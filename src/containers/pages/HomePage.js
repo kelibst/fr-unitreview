@@ -8,12 +8,13 @@ import Success from "../../components/Success";
 import Home from "./Home";
 import ErrOrs from "../../components/ErrOrs";
 import ClientView from "../../components/Patients/ClientView";
-import { matchPath } from "react-router-dom";
+import { matchPath, Route } from "react-router-dom";
 
 class HomePage extends Component {
   constructor(props) {
     super(props);
   }
+  
 
   render() {
     const { hospital, location, err, client, success} = this.props;
@@ -61,10 +62,7 @@ class HomePage extends Component {
        { pathname === "/" && <Home /> }
        {pathname === "/about" && <HomeOverview />}
        { pathname === "/client/dashboard" && <Clients />}
-       {/* { pathname === "/unit/:id" && <ClientView />} */}
-       { (matchPath(pathname, { path: '/unit/:id' }))          
-          && <ClientView  />
-       }
+       <Route exact path='/unit/:id' component={ClientView} />
         <footer className="home-footer text-center my-2">
           <div className="copyright fw-bold">
             Copyright &copy; 2021 {hospital?.body?.name}
