@@ -1,6 +1,7 @@
 const initState = {
   patients: {},
   patient: {},
+  patUnits: {}
 };
 
 const patientReducer = (state = initState, action) => {
@@ -14,6 +15,11 @@ const patientReducer = (state = initState, action) => {
       return {
         ...state,
         patient: action.payload,
+      };
+      case "GET_PAT_SLOTS":
+      return {
+        ...state,
+        patUnits: action.payload,
       };
     case "UPDATE_PATIENTS":
       const res = action.payload;

@@ -64,4 +64,38 @@ const fetchUnits = () => (dispatch) => {
       });
     });
 };
-export { createUnit, fetchUnits };
+
+
+const fetchUnit = (username) => (dispatch) => {
+
+  const getUnitsAxios = Axios.create({
+    baseURL: "https://unitreview.herokuapp.com/api/v1/",
+  });
+
+  getUnitsAxios
+    .get(`/units/${username}`)
+    .then((res) => {
+      dispatch({
+        type: "GET_UNIT",
+        payload: res.data,
+      });
+    })
+    .catch((err) => {
+      dispatch({
+        type: "CREATE_ERROR",
+        payload: {
+          ...err,
+          response: err?.response,
+        },
+      });
+    });
+};
+
+
+const setCurrentUnit = (unit) => (dispatch) => {
+  dispatch({
+    type: "SET_CURRENT_UNIT",
+    payload:  unit,
+  });
+}
+export { createUnit, fetchUnits, fetchUnit, setCurrentUnit };

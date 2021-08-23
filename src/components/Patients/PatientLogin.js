@@ -35,7 +35,7 @@ class PatientLogin extends Component {
     jwtToken = JSON.parse(jwtToken);
 
     // jwtToken?.token?.length && !error?.response && !patient?.created_at?.length && fetchPatient(jwtToken);
-    patient?.dates?.created_at?.length && history.push(`/client/dashboard`)
+    // patient?.dates?.created_at?.length && !error?.request && history.push(`/client/dashboard`)
   }
 
   render() {

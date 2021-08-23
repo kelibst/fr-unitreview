@@ -86,7 +86,6 @@ const loginPatientIn = (data) => (dispatch) => {
           message: "Welcome Back!",
           type: "login_success",
         };
-        debugger
         dispatch({
           type: "SUCC_MSG",
           payload: succPayload,
@@ -100,7 +99,10 @@ const loginPatientIn = (data) => (dispatch) => {
       .catch((err) =>
       dispatch({
         type: "CREATE_ERROR",
-        payload: err,
+        payload: {
+          ...err,
+          response: err?.response,
+        },
       })
     );
     })
@@ -146,6 +148,34 @@ const fetchPatient = (jwtToken) => (dispatch) => {
     );
 };
 
+
+const getPatSlotUnits = (jwtToken) => (dispatch) => {
+  const { token, username } = jwtToken;
+  const patSlotUnitsAxios = Axios.create({
+    baseURL: "https://unitreview.herokuapp.com/",
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+  patSlotUnitsAxios
+    .get(`/api/v1/units/reviewing/${username}.json`)
+    .then((res) => {
+      dispatch({
+        type: "GET_PAT_SLOTS",
+        payload: res.data,
+      });
+    })
+    .catch((err) =>
+      dispatch({
+        type: "CREATE_ERROR",
+        payload: {
+          ...err,
+          response: err?.response,
+        },
+      })
+    );
+};
+
 const addPatientToSlot = (ids, jwtToken) => (dispatch) => {
   const {unit_id, reviewer_id } = ids
 
@@ -182,4 +212,4 @@ const addPatientToSlot = (ids, jwtToken) => (dispatch) => {
     );
 }
 
-export { createPatient, fetchPatients, loginPatientIn, fetchPatient, addPatientToSlot };
+export { createPatient, fetchPatients, loginPatientIn, fetchPatient, addPatientToSlot, getPatSlotUnits };

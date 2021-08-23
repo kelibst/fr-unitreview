@@ -13,6 +13,22 @@ class ErrOrs extends Component {
     };
   }
 
+  componentDidMount() {
+    const { show } = this.state;
+    show &&
+      setTimeout(() => {
+        const { unloadError } = this.props;
+        show &&
+          this.setState(
+            {
+              show: false,
+            },
+            unloadError()
+          );
+      }, 3000);
+  }
+
+
   componentWillUnmount() {
     const { unloadError } = this.props;
     unloadError();
@@ -32,7 +48,7 @@ class ErrOrs extends Component {
         show: false,
       });
     };
-    const { error } = errors?.response?.data
+    // const { error } = errors?.response?.data
     return (
       <div>
         <Alert show={show} variant="danger">
@@ -40,11 +56,14 @@ class ErrOrs extends Component {
           {/* { error?.message && (<h6 className="my-5"> {error?.message}</h6>)} */}
           {/* { errors?.response && (<h6 className="my-1"> Sorry something went wrong</h6>)} */}
           
-            { typeof(errors) == "object" && <h6>{errors?.Email}</h6>}
+            {/* { typeof(errors) == "object" && <h6>{errors?.Email}</h6>}
             {Array.isArray(errors) && errors.map(err => <h6 key={err}>{err}</h6>) }
-            {typeof(error) === "string" && <h6 className="my-2">Sorry your session has expired! <br></br> Kindly login again.</h6>}
-            {error && typeof(error) !== "string" && Object.entries(errors?.response?.data?.error).map(error => <h6 key={error} className="my-2">{error}</h6>)}
-            {errors?.request && !errors?.response?.data && <h6 className="my-5"><Icofont icon="close" /> {errors.request.response}</h6>}
+            {typeof(errors?.response?.data?.error) === "string" && <h6 className="my-2">Sorry your session has expired! <br></br> Kindly login again.</h6>}
+            {/* {errors?.response?.data?.error && 
+              typeof(errors?.response?.data?.error) !== "string" && 
+              Object.entries(errors?.response?.data?.error).map(error => <h6 key={error} className="my-2">{error}</h6>)} */}
+            {/* {errors?.request && !errors?.response?.data && <h6 className="my-5"><Icofont icon="close" /> {errors.request.response}</h6>}} */}
+            Sorry something went wrong!
             
           </div>
           <hr />
@@ -59,13 +78,7 @@ class ErrOrs extends Component {
   }
 }
 
-ErrOrs.defaultProps = {
-  errors: PropTypes.shape,
-};
-ErrOrs.propTypes = {
-  errors: PropTypes.shape,
-  unloadError: PropTypes.func.isRequired,
-};
+
 
 const mapStateToProps = state => ({
   errors: state.errors.err,
