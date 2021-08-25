@@ -29,6 +29,36 @@ const fetchReviews = (jwtToken) => (dispatch) => {
       });
   };
 
+  const fetchUnitReviews = (jwtToken, unitUsername) => (dispatch) => {
+    const { token } = jwtToken;
+  
+    const getReviewsAxios = Axios.create({
+      baseURL: "https://unitreview.herokuapp.com",
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+  
+    getReviewsAxios
+      .get(`/api/v1/units-reviews/${unitUsername}.json`)
+      .then((res) => {
+        debugger
+        dispatch({
+          type: "GET_UNIT_REVIEWS",
+          payload: res.data,
+        });
+      })
+      .catch((err) => {
+        dispatch({
+          type: "CREATE_ERROR",
+          payload: {
+            ...err,
+            response: err?.response,
+          },
+        });
+      });
+  };
+
   const createReview = (jwtToken, formData, unitId, patientId) => (dispatch) => {
     const { token }= jwtToken;
     const data = {"review": {
@@ -74,4 +104,4 @@ const fetchReviews = (jwtToken) => (dispatch) => {
       })
   }
 
-  export { fetchReviews, createReview }
+  export { fetchReviews, fetchUnitReviews, createReview }
