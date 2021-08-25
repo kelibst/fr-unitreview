@@ -5,6 +5,7 @@ import { fetchPatient } from "../../store/actions/PatientAction";
 import { fetchUnit } from "../../store/actions/unitAction";
 import { fetchUnitReviews } from "../../store/actions/reviewsAction";
 import Icofont from "react-icofont";
+import ClientReview from "./ClientReview";
 class ClientView extends Component {
   constructor(props) {
     super(props);
@@ -31,7 +32,7 @@ class ClientView extends Component {
   }
 
   render() {
-    const { unit } = this.props;
+    const { unit, unitReviews } = this.props;
 
     return (
       <div className="clientview">
@@ -58,8 +59,14 @@ class ClientView extends Component {
               <Icofont icon="comment" /> {unit?.body?.reviews}
             </h5>
           </div>
-          <hr></hr>
-        </div>
+         
+
+         
+        </div> 
+        <hr className="my-5"/>
+        <div className="unit-reviews">
+              {unitReviews?.length && unitReviews?.map(rev => <ClientReview review={rev} />)}
+          </div>
       </div>
     );
   }

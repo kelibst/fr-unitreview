@@ -42,7 +42,6 @@ const fetchReviews = (jwtToken) => (dispatch) => {
     getReviewsAxios
       .get(`/api/v1/units-reviews/${unitUsername}.json`)
       .then((res) => {
-        debugger
         dispatch({
           type: "GET_UNIT_REVIEWS",
           payload: res.data,
@@ -74,7 +73,7 @@ const fetchReviews = (jwtToken) => (dispatch) => {
       },
     });
     postReviewAxios
-      .post("/reviews", data)
+      .post("/reviews.json", data)
       .then((res) => {
         const succPayload = {
           message: "Review was successfully added!",
