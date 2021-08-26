@@ -23,11 +23,12 @@ class Clients extends Component {
     const isNotEmpty = (obj) => Object.keys(obj).length !== 0;
     return (
       <div className="pat-dash container-lg">
-        { isNotEmpty(patUnits) && (
+        { isNotEmpty(patUnits) ? (
           <div className="container-units">
             { patUnits?.map((unit) => <ClientUnit key={unit.id} unit={unit} SlotUnit={true} />)}
           </div>
-        )}
+        ) :
+        (<div className="text-center my-5 fw-bold"> You currently do not have a unit to review.</div>)}
       </div>
     );
   }

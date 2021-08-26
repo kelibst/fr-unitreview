@@ -29,13 +29,21 @@ class PatientLogin extends Component {
     patient?.dates?.created_at?.length && history.push(`/client/dashboard`)
   }
 
-  componentDidUpdate() {
-    const { patient, history, fetchPatient, error } = this.props;
+  componentDidUpdate(prevProps, prevState) {
+    const { patient, history, fetchPatient, error, success } = this.props;
     let jwtToken = localStorage.getItem("patJwt");
     jwtToken = JSON.parse(jwtToken);
 
-    // jwtToken?.token?.length && !error?.response && !patient?.created_at?.length && fetchPatient(jwtToken);
-    // patient?.dates?.created_at?.length && !error?.request && history.push(`/client/dashboard`)
+    const isNotEmpty = (obj) => Object.keys(obj).length !== 0;
+    isNotEmpty(error) ?
+      prevProps.error !== error &&
+        jwtToken?.token?.length && !patient?.dates?.created_at?.length && fetchPatient(jwtToken) :
+    success.type ===  "login_success" && 
+      jwtToken?.token?.length && 
+        !patient && fetchPatient(jwtToken) 
+
+      patient?.dates?.created_at?.length &&
+        history.push(`/client/dashboard`)
   }
 
   render() {
