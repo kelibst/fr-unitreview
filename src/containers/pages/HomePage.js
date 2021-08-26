@@ -14,11 +14,10 @@ class HomePage extends Component {
   constructor(props) {
     super(props);
   }
-  
 
   render() {
-    const { hospital, location, err, client, success} = this.props;
-    const {pathname} = location
+    const { hospital, location, err, client, success } = this.props;
+    const { pathname } = location;
     return (
       <div className="content">
         {success?.message.length && <Success />}
@@ -32,12 +31,31 @@ class HomePage extends Component {
               {hospital?.body?.name}
             </Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
-            {client?.body ? 
-              client?.body?.name :
-              <Nav.Link className="btn btn-lime" href="/client/login">
-              Login
-            </Nav.Link>
-          }
+            {client?.body ? (
+              <div className="linkss d-flex">
+                <Nav.Link className="btn btn-lime" href="/client/login">
+                  { client?.body?.name }
+                </Nav.Link>
+
+                <Nav.Link className="btn btn-lime" href="/client/dashboard">
+                  Dashboard
+                </Nav.Link>
+
+                <Nav.Link className="btn btn-lime" href="/about">
+                  About
+                </Nav.Link>
+              </div>
+            ) : (
+              <div className="linkss d-flex">
+                <Nav.Link className="btn btn-lime" href="/client/login">
+                  Login
+                </Nav.Link>
+
+                <Nav.Link className="btn btn-lime" href="/about">
+                  About
+                </Nav.Link>
+              </div>
+            )}
           </Navbar>
           <div className="hero-container container-lg d-flex">
             <div className="hero-title-container mx-auto my-auto col-md-6">
@@ -46,23 +64,21 @@ class HomePage extends Component {
                 care
               </h1>
               <div className="hero-card shadow-lg d-flex mt-5 mx-auto">
-                <img src={heart} className="lil-heart" alt="lil-heart"/>
+                <img src={heart} className="lil-heart" alt="lil-heart" />
                 <div className="hero-card-cont">24 hours Health-Care</div>
                 <div className="hero-card-cont">7/7 days</div>
               </div>
             </div>
             <div className="hero-side d-flex align-items-center justify-content-center col-md-6">
-              <div className="hero-side-bg">
-                
-              </div>
+              <div className="hero-side-bg"></div>
             </div>
           </div>
         </header>
-          {/* {err?.response && ErrOrs} */}
-       { pathname === "/" && <Home /> }
-       {pathname === "/about" && <HomeOverview />}
-       { pathname === "/client/dashboard" && <Clients />}
-       <Route exact path='/unit/:id' component={ClientView} />
+        {/* {err?.response && ErrOrs} */}
+        {pathname === "/" && <Home />}
+        {pathname === "/about" && <HomeOverview />}
+        {pathname === "/client/dashboard" && <Clients />}
+        <Route exact path="/unit/:id" component={ClientView} />
         <footer className="home-footer text-center my-2">
           <div className="copyright fw-bold">
             Copyright &copy; 2021 {hospital?.body?.name}
