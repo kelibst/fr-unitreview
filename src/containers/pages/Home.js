@@ -13,7 +13,7 @@ class Home extends Component {
     let jwtToken = localStorage.getItem("patJwt");
     jwtToken = JSON.parse(jwtToken);
     jwtToken?.exp && fetchPatient(jwtToken);
-    jwtToken?.exp && fetchUnits();
+    fetchUnits();
     console.log(this.props);
   }
 

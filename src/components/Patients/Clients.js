@@ -28,7 +28,9 @@ class Clients extends Component {
             { patUnits?.map((unit) => <ClientUnit key={unit.id} unit={unit} SlotUnit={true} />)}
           </div>
         ) :
-        (<div className="text-center my-5 fw-bold"> You currently do not have a unit to review.</div>)}
+        (<div className="text-center my-5 fw-bold"> You currently do not have a unit to review. <br/>
+        <a href="/" className="btn my-5 btn-success">Check out our current performance reviews.</a>
+        </div>)}
       </div>
     );
   }

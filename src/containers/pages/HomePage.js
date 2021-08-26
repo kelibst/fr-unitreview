@@ -27,7 +27,7 @@ class HomePage extends Component {
     let jwtToken = localStorage.getItem("patJwt");
     jwtToken = JSON.parse(jwtToken);
     const { history } = this.props;
-    this.props !== prevProps && !jwtToken?.exp && history.push("/client/login");
+    this.props !== prevProps &&  this.props?.location?.pathname === "/client/dashboard" && !jwtToken?.exp && history.push("/client/login");
   }
 
   render() {
@@ -41,7 +41,7 @@ class HomePage extends Component {
 
     return (
       <div className="content">
-        {success?.message.length && <Success />}
+        {success?.message.length !== 0 && <Success />}
         <header className="home-header">
           <Navbar
             bg="white"
@@ -54,7 +54,7 @@ class HomePage extends Component {
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             {client?.body ? (
               <div className="linkss d-flex me-3">
-                <Nav.Link className="btn btn-lime" href="/client/login">
+                <Nav.Link className="btn btn-lime" href="/">
                   {client?.body?.name}
                 </Nav.Link>
 

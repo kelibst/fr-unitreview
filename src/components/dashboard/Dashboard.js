@@ -25,14 +25,11 @@ class Dashboard extends Component {
     !currentUser.id && !jwtToken?.token?.length && history.push("/login");
   }
 
-  componentDidUpdate() {
-    const { error, history, currentUser } = this.props;
+  componentDidUpdate(prevProps, prevState) {
+    const { history, currentUser } = this.props;
     let jwtToken = localStorage.getItem("jwt");
     jwtToken = JSON.parse(jwtToken);
-    typeof error?.response?.data?.error === "string" &&
-      error?.response?.data?.error?.includes("expired") &&
-      history.push("/login");
-    !currentUser.id && !jwtToken && history.push("/login");
+    this.props !== prevProps && !jwtToken?.exp && history.push("/login");
   }
   render() {
     const {
@@ -45,8 +42,8 @@ class Dashboard extends Component {
     } = this.props;
     const logUserOut = () => {
       localStorage.removeItem("jwt");
-
       history.push("/login");
+      console.log("run")
     };
     const { path } = this.props?.match
     return (

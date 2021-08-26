@@ -29,7 +29,7 @@ class DashNav extends Component {
                     <div className="dash-user">
                         <div className="dash-user-icon"><Icofont icon="user" /></div>
                         <p className="dash-user-name">{currentUser?.body?.name}</p>
-                        <button className="btn--exit" onClick={()=> logUserOut()}><Icofont icon="exit"/></button>
+                        <button className="btn btn-danger ms-3" onClick={()=> logUserOut()}>Log Out</button>
                     </div>
                 </div>
             </nav>

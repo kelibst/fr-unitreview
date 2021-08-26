@@ -5,7 +5,7 @@ import StarRatings from "react-star-ratings";
 const ClientReview = ({ review }) => {
   const { reviewer, body } = review;
   return (
-    <div className="client-review">
+    <div className="client-review my-2">
       <div className="rev-header align-items-center mb-3 d-flex">
         {review?.reviewer?.sex === "male" ? (
           <Icofont icon="user-alt-4" size="2" />
