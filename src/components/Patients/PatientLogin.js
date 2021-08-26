@@ -26,7 +26,7 @@ class PatientLogin extends Component {
     const { fetchPatient, error } = this.props;
     jwtToken?.token?.length && fetchPatient(jwtToken);
     const { patient, history } = this.props;
-    patient?.dates?.created_at?.length && history.push(`/client/dashboard`)
+    patient?.dates?.created_at?.length &&  jwtToken?.token?.length && history.push(`/client/dashboard`)
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -37,12 +37,12 @@ class PatientLogin extends Component {
     const isNotEmpty = (obj) => Object.keys(obj).length !== 0;
     isNotEmpty(error) ?
       prevProps.error !== error &&
-        jwtToken?.token?.length && !patient?.dates?.created_at?.length && fetchPatient(jwtToken) :
+        jwtToken?.exp && !patient?.dates?.created_at?.length && fetchPatient(jwtToken) :
     success.type ===  "login_success" && 
-      jwtToken?.token?.length && 
+      jwtToken?.exp && 
         !patient && fetchPatient(jwtToken) 
 
-      patient?.dates?.created_at?.length &&
+      patient?.dates?.created_at?.length && jwtToken?.token?.length &&
         history.push(`/client/dashboard`)
   }
 
