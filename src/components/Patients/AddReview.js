@@ -22,9 +22,9 @@ class AddReview extends Component {
     const { success } = this.props;
     const { show } = this.state;
     if (success?.type === "review_create_success") {
-      let jwtToken = localStorage.getItem("patJwt");
-      jwtToken = JSON.parse(jwtToken);
-      jwtToken?.exp && show && getPatSlotUnits(jwtToken);
+      // let jwtToken = localStorage.getItem("patJwt");
+      // jwtToken = JSON.parse(jwtToken);
+      // getPatSlotUnits(jwtToken);
       show &&
         this.setState({
           ...this.state,
@@ -82,7 +82,7 @@ class AddReview extends Component {
     const { error, success } = this.props;
 
     return (
-      <div className="side-btn">
+      <>
         <Button variant="primary" onClick={handleShow}>
           Leave a review
           <Icofont icon="ui-add" className="unit-add" />
@@ -94,8 +94,8 @@ class AddReview extends Component {
           <Modal.Body>
             <div className="form-container">
               <Form onSubmit={handleSubmit}>
-                {/* {success?.message?.message && <Success />}
-                {error.response && <ErrOrs />} */}
+                 {success?.message?.message && <Success />}
+                {error.response && <ErrOrs />} 
                 <Form.Group controlId="title" className="pb-3">
                   <Form.Label>Title</Form.Label>
                   <Form.Control required type="text" onChange={handleChange} />
@@ -124,7 +124,7 @@ class AddReview extends Component {
             </div>
           </Modal.Body>
         </Modal>
-      </div>
+      </>
     );
   }
 }

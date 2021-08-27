@@ -29,7 +29,7 @@ const ClientUnit = ({ unit, SlotUnit }) => {
           <h5 className="unit-head-name  fw-bold">
               <Icofont icon="comment" /> {unit?.body?.reviews}
             </h5>
-          <div classNanem="d-flex justify-content-between">
+          <div className="d-flex justify-content-between">
           {
             SlotUnit  &&
             <AddReview unitId={unit?.id} />
