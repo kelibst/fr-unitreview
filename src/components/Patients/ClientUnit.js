@@ -34,7 +34,7 @@ const ClientUnit = ({ unit, SlotUnit }) => {
             SlotUnit  &&
             <AddReview unitId={unit?.id} />
           }
-          <a href={`unit/${unit?.body?.unit_username}`} className="btn btn-success">More</a>
+          <a href={`./unit/${unit?.body?.unit_username}`} className="btn btn-success">More</a>
          </div> 
         </div>
       </div>

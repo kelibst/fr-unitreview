@@ -1,9 +1,12 @@
 import React from "react";
 import { DropdownButton, Dropdown } from "react-bootstrap";
+import Icofont from "react-icofont";
 
 const Patient = ({ patient, allUnits, jwtToken, addPatientToSlot }) => {
   const { email, phone, name, address } = patient.body;
   const { created_at } = patient.dates;
+  let UTCdate = new Date(created_at)
+  const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
   const { reviewer_slots } = patient;
   const isNotEmpty = (obj) => Object.keys(obj).length !== 0;
 
@@ -19,7 +22,7 @@ const Patient = ({ patient, allUnits, jwtToken, addPatientToSlot }) => {
           <h6 className="h6 text-capitalize fw-bold">
             {name}
             <br />
-            <span className="text-secondary">{created_at}</span>
+            <span className="text-secondary"> <span className="me-2"><Icofont icon="clock-time" /></span> {UTCdate.toLocaleDateString(undefined, options)}</span>
             <br />
             <span className="text-secondary">
               Slots: {reviewer_slots.length}
