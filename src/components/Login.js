@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Button, Form } from "react-bootstrap";
 import Icofont from "react-icofont";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 import { unloadError } from "../store/actions/errorAction";
 import { authAdmin, fetchAdmin } from '../store/actions/userAction'
 import "./Auth.scss";
@@ -118,9 +119,9 @@ class Login extends Component {
               Submit
             </Button>
             <p className="mt-3 font-weight-bolder auth-text">OR</p>
-            <a href="/create-account" className="my-3 text-center btn-link">
+            <Link to="/create-account" className="my-3 text-center btn-link">
               Register
-            </a>
+            </Link>
           </Form>
         </div>
       </div>

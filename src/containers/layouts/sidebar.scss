@@ -52,11 +52,12 @@ i.unit-add{
   }
   &-link {
     transition: all 0.3s;
+    padding: 1rem;
   }
 
   &-link.active,
   &-link.active:focus {
-    padding: 1rem 0;
+    padding: 1rem 20px;
     background: white;
     border-radius: 1rem 0 0 1rem;
     color: black !important;

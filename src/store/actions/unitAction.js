@@ -66,13 +66,9 @@ const fetchUnits = () => (dispatch) => {
 };
 
 
-const fetchUnit = (jwtToken, username) => (dispatch) => {
-  const { token } = jwtToken;
+const fetchUnit = (username) => (dispatch) => {
   const getUnitAxios = Axios.create({
     baseURL: "https://unitreview.herokuapp.com/api/v1",
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
   });
   getUnitAxios
     .get(`/units/${username}.json`)

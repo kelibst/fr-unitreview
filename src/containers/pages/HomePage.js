@@ -8,7 +8,7 @@ import Success from "../../components/Success";
 import Home from "./Home";
 import ErrOrs from "../../components/ErrOrs";
 import ClientView from "../../components/Patients/ClientView";
-import { matchPath, Route } from "react-router-dom";
+import { matchPath, NavLink, Route } from "react-router-dom";
 
 class HomePage extends Component {
   constructor(props) {
@@ -48,23 +48,23 @@ class HomePage extends Component {
             className="d-flex justify-content-between"
             expand="lg"
           >
-            <Navbar.Brand href="/" className="home-brand">
+            <NavLink to="/" className="brand home-brand">
               {hospital?.body?.name}
-            </Navbar.Brand>
+            </NavLink>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             {client?.body ? (
               <div className="linkss d-flex me-3">
-                <Nav.Link className="btn btn-lime" href="/">
+                <NavLink className="nav-link" to="/">
                   {client?.body?.name}
-                </Nav.Link>
+                </NavLink>
 
-                <Nav.Link className="btn btn-lime" href="/client/dashboard">
+                <NavLink className="nav-link" to="/client/dashboard">
                   Dashboard
-                </Nav.Link>
+                </NavLink>
 
-                <Nav.Link className="btn btn-lime" href="/about">
+                <NavLink className="nav-link" to="/about">
                   About
-                </Nav.Link>
+                </NavLink>
 
                 <button
                   type="button"
@@ -76,13 +76,13 @@ class HomePage extends Component {
               </div>
             ) : (
               <div className="linkss d-flex">
-                <Nav.Link className="btn btn-lime" href="/client/login">
+                <NavLink className="nav-link" to="/client/login">
                   Login
-                </Nav.Link>
+                </NavLink>
 
-                <Nav.Link className="btn btn-lime" href="/about">
+                <NavLink className="nav-link" to="/about">
                   About
-                </Nav.Link>
+                </NavLink>
               </div>
             )}
           </Navbar>

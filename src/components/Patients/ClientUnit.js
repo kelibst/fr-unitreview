@@ -2,6 +2,7 @@ import React from "react";
 import StarRatings from "react-star-ratings";
 import AddReview from "./AddReview";
 import Icofont from "react-icofont";
+import { Link } from "react-router-dom";
 
 const ClientUnit = ({ unit, SlotUnit }) => {
   return (
@@ -34,7 +35,7 @@ const ClientUnit = ({ unit, SlotUnit }) => {
             SlotUnit  &&
             <AddReview unitId={unit?.id} />
           }
-          <a href={`./unit/${unit?.body?.unit_username}`} className="btn btn-success">More</a>
+          <Link to={`./unit/${unit?.body?.unit_username}`} className="btn btn-success">More</Link>
          </div> 
         </div>
       </div>

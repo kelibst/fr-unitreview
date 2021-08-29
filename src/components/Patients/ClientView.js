@@ -12,13 +12,14 @@ class ClientView extends Component {
   }
 
   componentDidMount() {
-    const { patient, fetchPatient, fetchUnit, match, unit } = this.props;
+    const { patient, fetchPatient, fetchUnit, match, unit, fetchUnitReviews } = this.props;
 
     let jwtToken = localStorage.getItem("patJwt");
     jwtToken = JSON.parse(jwtToken);
     jwtToken?.exp && !patient.id && fetchPatient(jwtToken);
-    jwtToken?.exp && fetchUnit(jwtToken, match?.params?.id);
-    fetchUnitReviews(jwtToken, match?.params?.id)
+    // jwtToken?.exp && 
+    fetchUnit(match?.params?.id);
+    fetchUnitReviews(match?.params?.id)
   }
 
   componentDidUpdate(){
@@ -28,7 +29,7 @@ class ClientView extends Component {
     
     const { patient, fetchPatient, fetchUnitReviews, match, unitReviews, error } = this.props;
 //    isNotEmpty(unitReviews) && console.log(error) 
-    jwtToken?.exp && !error?.response && unitReviews[0] === 'Empty' && fetchUnitReviews(jwtToken, match?.params?.id)
+    jwtToken?.exp && !error?.response && unitReviews[0] === 'Empty' && fetchUnitReviews(match?.params?.id)
   }
 
   render() {
