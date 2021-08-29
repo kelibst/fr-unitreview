@@ -1,6 +1,8 @@
 import React from "react";
 import StarRatings from "react-star-ratings";
 import AddReview from "./AddReview";
+import Icofont from "react-icofont";
+import { Link } from "react-router-dom";
 
 const ClientUnit = ({ unit, SlotUnit }) => {
   return (
@@ -25,12 +27,15 @@ const ClientUnit = ({ unit, SlotUnit }) => {
             starDimension="20px"
             starSpacing="5px"
           /></div>
-          <div classNanem="d-flex justify-content-between">
+          <h5 className="unit-head-name  fw-bold">
+              <Icofont icon="comment" /> {unit?.body?.reviews}
+            </h5>
+          <div className="d-flex justify-content-between">
           {
             SlotUnit  &&
             <AddReview unitId={unit?.id} />
           }
-          <a href={`unit/${unit?.body?.unit_username}`} className="btn btn-success">More</a>
+          <Link to={`./unit/${unit?.body?.unit_username}`} className="btn btn-success">More</Link>
          </div> 
         </div>
       </div>

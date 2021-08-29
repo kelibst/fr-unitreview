@@ -57,7 +57,8 @@
     padding: 0.5rem 1rem;
     text-decoration: none;
     color: black;
-
+    @include defaul-shadow();
+    border-radius: 5rem;
     &:hover {
       color: lightslategray;
     }
@@ -79,18 +80,22 @@
     }
 
     &-icon {
-      padding: 0.5rem 0.8rem;
-      font-size: 0.8rem;
+      // padding: 0.5rem 0.8rem;
+       text-decoration: none;
+      // font-size: 0.8rem;
+      font-size: 1.4rem;
       border-radius: 5rem;
-      background: $danger;
+      background: white;
+      padding: 0.5rem 1rem;
+      @include defaul-shadow();
       margin: 0 1rem;
     }
   }
 }
 
-.bd-rt {
-  border-right: 1px solid black;
-}
+// .bd-rt {
+//   // border-right: 1px solid black;
+// }
 
 .noti {
   position: relative;

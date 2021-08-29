@@ -67,13 +67,11 @@ const fetchUnits = () => (dispatch) => {
 
 
 const fetchUnit = (username) => (dispatch) => {
-
-  const getUnitsAxios = Axios.create({
-    baseURL: "https://unitreview.herokuapp.com/api/v1/",
+  const getUnitAxios = Axios.create({
+    baseURL: "https://unitreview.herokuapp.com/api/v1",
   });
-
-  getUnitsAxios
-    .get(`/units/${username}`)
+  getUnitAxios
+    .get(`/units/${username}.json`)
     .then((res) => {
       dispatch({
         type: "GET_UNIT",
@@ -91,11 +89,4 @@ const fetchUnit = (username) => (dispatch) => {
     });
 };
 
-
-const setCurrentUnit = (unit) => (dispatch) => {
-  dispatch({
-    type: "SET_CURRENT_UNIT",
-    payload:  unit,
-  });
-}
-export { createUnit, fetchUnits, fetchUnit, setCurrentUnit };
+export { createUnit, fetchUnits, fetchUnit };

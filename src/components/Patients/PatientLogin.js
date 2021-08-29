@@ -26,16 +26,24 @@ class PatientLogin extends Component {
     const { fetchPatient, error } = this.props;
     jwtToken?.token?.length && fetchPatient(jwtToken);
     const { patient, history } = this.props;
-    patient?.dates?.created_at?.length && history.push(`/client/dashboard`)
+    patient?.dates?.created_at?.length &&  jwtToken?.token?.length && history.push(`/client/dashboard`)
   }
 
-  componentDidUpdate() {
-    const { patient, history, fetchPatient, error } = this.props;
+  componentDidUpdate(prevProps, prevState) {
+    const { patient, history, fetchPatient, error, success } = this.props;
     let jwtToken = localStorage.getItem("patJwt");
     jwtToken = JSON.parse(jwtToken);
 
-    // jwtToken?.token?.length && !error?.response && !patient?.created_at?.length && fetchPatient(jwtToken);
-    // patient?.dates?.created_at?.length && !error?.request && history.push(`/client/dashboard`)
+    const isNotEmpty = (obj) => Object.keys(obj).length !== 0;
+    isNotEmpty(error) ?
+      prevProps.error !== error &&
+        jwtToken?.exp && !patient?.dates?.created_at?.length && fetchPatient(jwtToken) :
+    success.type ===  "login_success" && 
+      jwtToken?.exp && 
+        !patient && fetchPatient(jwtToken) 
+
+      patient?.dates?.created_at?.length && jwtToken?.token?.length &&
+        history.push(`/client/dashboard`)
   }
 
   render() {

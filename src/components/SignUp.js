@@ -6,6 +6,7 @@ import { createAdmin } from "../store/actions/userAction";
 import ErrOrs from "./ErrOrs";
 import Success from "./Success";
 import "./Auth.scss";
+import { Link } from "react-router-dom";
 
 class SignUp extends Component {
   constructor(props) {
@@ -126,9 +127,9 @@ class SignUp extends Component {
               Submit
             </Button>
             <p className="mt-3 font-weight-bolder auth-text">OR</p>
-            <a href="/login" className="my-3 text-center btn-link">
+            <Link to="/login" className="my-3 text-center btn-link">
               Login
-            </a>
+            </Link>
           </Form>
         </div>
       </div>

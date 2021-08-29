@@ -25,19 +25,6 @@ class Patients extends Component {
     const isNotEmpty = (obj) => Object.keys(obj).length !== 0;
     let jwtToken = localStorage.getItem("jwt");
     jwtToken = JSON.parse(jwtToken);
-    // const genUnit = (patient, currentUnit) => {
-    //   let nallUnits = [];
-    //   const { reviewer_slots } = patient;
-    //   units.filter((unit) => {
-    //     reviewer_slots.filter((slot) => {
-    //       if (slot?.unit_id !== unit.id) {
-    //         nallUnits.push(unit);
-    //       }
-    //     });
-    //   });
-    //   console.log(nallUnits.length, units.length);
-    //   return nallUnits
-    // };
     return (
       <div className="patients">
         <h1 className="h6 ps-3 fw-bold">List of patients</h1>
